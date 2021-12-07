@@ -1,0 +1,24 @@
+{
+  "name": "mesto-project",
+  "version": "1.0.0",
+  "description": "* Figma\r * Картинки",
+  "main": "index.js",
+  "scripts": {
+    "start": "css-to-bem-file-structure style.css",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TakeYourEnergy/mesto-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TakeYourEnergy/mesto-project/issues"
+  },
+  "homepage": "https://github.com/TakeYourEnergy/mesto-project#readme",
+  "devDependencies": {
+    "css-to-bem-file-structure": "0.0.1"
+  }
+}

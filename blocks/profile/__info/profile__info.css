@@ -1,0 +1,10 @@
+.profile__info {
+   color: #FFFFFF;
+   margin-right: auto;
+   display: grid;
+   grid-template-areas:
+      "name button-edit"
+      "about about";
+   row-gap: 16px;
+   column-gap: 18px;
+}

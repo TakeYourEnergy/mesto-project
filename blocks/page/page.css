@@ -1,0 +1,15 @@
+.page {
+   font-family: 'Inter', 'arial', sans-serif;
+   font-style: normal;
+   max-width: 880px;
+   min-width: 282px;
+   margin: 0 auto;
+   width: 100%;
+   /* сглаживание */
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
+   /* Подгонка размера текста */
+   -webkit-text-size-adjust: 100%;
+   -ms-text-size-adjust: 100%;
+   -moz-text-size-adjust: 100%;
+}

@@ -1,0 +1,4 @@
+.box__element {
+   display: flex;
+   flex-direction: column;
+}
