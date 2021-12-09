@@ -3,3 +3,9 @@
   margin: 0 0 18px 0;
   border: none;
 }
+
+@media screen and (max-width: 320px) {
+  .popup__information {
+    margin: 0 0 15px 0;
+  }
+}

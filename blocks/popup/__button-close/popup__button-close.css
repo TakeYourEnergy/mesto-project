@@ -8,4 +8,14 @@
   border: none;
   top: -40px;
   right: -40px;
+  background-size: contain;
+}
+
+@media screen and (max-width: 320px) {
+  .popup__button-close {
+    width: 20px;
+    height: 20px;
+    top: -36px;
+    right: 0px;
+  }
 }
