@@ -11,7 +11,16 @@
   background-size: contain;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (min-width: 320px) and (max-width: 683px) {
+  .popup__button-close {
+    width: 20px;
+    height: 20px;
+    top: -36px;
+    right: 0px;
+  }
+}
+
+@media screen and (max-width: 319px) {
   .popup__button-close {
     width: 20px;
     height: 20px;
