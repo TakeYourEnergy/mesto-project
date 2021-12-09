@@ -77,16 +77,16 @@
     </main>
   </div>
   <div class="popup popup_opened">
-    <form class="popup__container">
+    <form class="popup__container" name="personal-information">
       <div class="popup__inner">
         <button class="button popup__button-close" type="button"></button>
         <fieldset class="popup__information">
           <legend class="popup__title">Редактировать профиль</legend>
-          <label class="popup__lable">
-            <input class="popup__input" type="text" placeholder="Введите имя" value="Жак-Ив Кусто">
+          <label class="popup__lable" for="name">
+            <input class="popup__input" id="name" type="text" placeholder="Введите имя" value="Жак-Ив Кусто">
           </label>
-          <label class="popup__lable">
-            <input class="popup__input" type="text" placeholder="Введите род деятельности" value="Исследователь океана">
+          <label class="popup__lable" for="about">
+            <input class="popup__input" id="about" type="text" placeholder="Деятельность" value="Исследователь океана">
           </label>
         </fieldset>
         <button class="popup__button-submit" type="submit">Сохранить</button>
