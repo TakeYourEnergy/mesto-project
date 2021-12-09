@@ -1,7 +1,30 @@
 .profile__text {
-   grid-area: about;
-   margin: 0;
-   font-weight: 400;
-   font-size: 18px;
-   line-height: 22px;
+  grid-area: about;
+  margin: 0;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+@media screen and (min-width: 747px) and (max-width: 890px) {
+  .profile__text {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+
+@media screen and (min-width: 571px) and (max-width: 746px) {
+  .profile__text {
+    font-size: 19px;
+    line-height: 25px;
+  }
+}
+
+@media screen and (max-width: 570px) {
+  .profile__text {
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    justify-self: center;
+  }
 }

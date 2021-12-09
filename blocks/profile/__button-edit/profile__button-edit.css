@@ -1,16 +1,35 @@
 .profile__button-edit {
-   grid-area: button-edit;
-   background-image: url(./img/Edit-Button.svg);
-   background-repeat: no-repeat;
-   background-size: cover;
-   background-position: center;
-   background-color: inherit;
-   width: 24px;
-   height: 24px;
-   align-self: end;
-   margin-bottom: 7px;
-   border: 1px solid #fff;
-   cursor: pointer;
-   box-sizing: border-box;
-   transition: opacity 0.2s linear;
+  grid-area: button-edit;
+  background-image: url(../../../img/PENCIL.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: inherit;
+  width: 24px;
+  height: 24px;
+  padding: 7px;
+  align-self: end;
+  margin-bottom: 7px;
+  border: 1px solid #fff;
+}
+
+@media screen and (min-width: 747px) and (max-width: 890px) {
+  .profile__button-edit {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+@media screen and (min-width: 571px) and (max-width: 746px) {
+  .profile__button-edit {
+    width: 23px;
+    height: 23px;
+  }
+}
+
+@media screen and (max-width: 570px) {
+  .profile__button-edit {
+    width: 18px;
+    height: 18px;
+    padding: 5px;
+  }
 }

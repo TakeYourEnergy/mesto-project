@@ -1,8 +1,34 @@
 .profile__name {
-   grid-area: name;
-   margin: 0;
-   font-weight: 500;
-   font-size: 42px;
-   line-height: 48px;
-   align-self: end;
+  grid-area: name;
+  margin: 0;
+  font-weight: 500;
+  font-size: 42px;
+  line-height: 48px;
+  align-self: end;
+}
+
+@media screen and (min-width: 747px) and (max-width: 890px) {
+  .profile__name {
+    font-weight: 500;
+    font-size: 35px;
+    line-height: 40px;
+  }
+}
+
+@media screen and (min-width: 571px) and (max-width: 746px) {
+  .profile__name {
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 45px;
+  }
+}
+
+@media screen and (max-width: 570px) {
+  .profile__name {
+    font-weight: 500;
+    font-size: 27px;
+    line-height: 33px;
+    text-align: center;
+    margin-left: 24px;
+  }
 }

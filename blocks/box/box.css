@@ -1,9 +1,16 @@
 .box {
-   display: grid;
-   grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
-   column-gap: 17px;
-   row-gap: 20px;
-   justify-content: center;
-   width: 100%;
-   margin-bottom: 67px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
+  column-gap: 17px;
+  row-gap: 20px;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 67px;
+}
+
+@media screen and (max-width: 320px) {
+  .box {
+    grid-template-columns: repeat(1, 282px);
+    margin-bottom: 48px;
+  }
 }

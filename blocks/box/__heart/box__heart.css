@@ -1,13 +1,17 @@
 .box__heart {
-   cursor: pointer;
-   width: 22px;
-   height: 19px;
-   background-image: url(./img/heart.svg);
-   background-repeat: no-repeat;
-   background-size: cover;
-   background-position: center;
-   border: none;
-   display: block;
-   background-color: initial;
-   transition: opacity 0.2s linear;
+  cursor: pointer;
+  width: 22px;
+  height: 19px;
+  background-image: url(../../../img/heart.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border: none;
+  display: block;
+  background-color: initial;
+  transition: opacity 0.2s linear;
+}
+
+.box__heart:hover {
+  opacity: 0.5;
 }

@@ -1,15 +1,35 @@
 .profile__button-add {
-   cursor: pointer;
-   width: 150px;
-   height: 50px;
-   background-image: url(./img/Add-Button.svg);
-   background-repeat: no-repeat;
-   background-size: cover;
-   background-position: center;
-   align-self: center;
-   background-color: inherit;
-   border: 2px solid #fff;
-   box-sizing: border-box;
-   border-radius: 2px;
-   transition: opacity 0.2s linear;
+  width: 150px;
+  height: 50px;
+  background-image: url(../../../img/PLUS.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 17px 64px;
+  align-self: center;
+  background-color: inherit;
+  border: 2px solid #fff;
+  border-radius: 2px;
+}
+
+@media screen and (min-width: 747px) and (max-width: 890px) {
+  .profile__button-add {
+    width: 70px;
+    height: 30px;
+  }
+}
+
+@media screen and (min-width: 571px) and (max-width: 746px) {
+  .profile__button-add {
+    width: 300px;
+    height: 50px;
+    margin: 30px auto 0;
+  }
+}
+
+@media screen and (max-width: 570px) {
+  .profile__button-add {
+    width: 282px;
+    height: 50px;
+    padding: 17px 133px;
+  }
 }

@@ -1,10 +1,25 @@
 .profile__info {
-   color: #FFFFFF;
-   margin-right: auto;
-   display: grid;
-   grid-template-areas:
-      "name button-edit"
-      "about about";
-   row-gap: 16px;
-   column-gap: 18px;
+  color: #FFFFFF;
+  margin-right: auto;
+  display: grid;
+  grid-template-areas:
+    "name button-edit"
+    "about about";
+  row-gap: 16px;
+  column-gap: 18px;
+}
+
+@media screen and (min-width: 571px) and (max-width: 746px) {
+  .profile__info {
+    margin-right: auto;
+    column-gap: 25px;
+  }
+}
+
+@media screen and (max-width: 570px) {
+  .profile__info {
+    column-gap: 10px;
+    row-gap: 14px;
+    margin: 0 0 36px;
+  }
 }

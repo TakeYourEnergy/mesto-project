@@ -1,10 +1,22 @@
 .profile__avatar {
-   background-image: url(./img/Avatar.jpg);
-   background-repeat: no-repeat;
-   background-size: cover;
-   background-position: center;
-   width: 120px;
-   height: 120px;
-   border-radius: 50%;
-   margin-right: 30px;
+  background-image: url(../../../img/Avatar.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin-right: 30px;
+}
+
+@media screen and (min-width: 571px) and (max-width: 746px) {
+  .profile__avatar {
+    margin-left: auto;
+  }
+}
+
+@media screen and (max-width: 570px) {
+  .profile__avatar {
+    margin: 0 0 26px;
+  }
 }
