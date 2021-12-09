@@ -5,7 +5,7 @@
   grid-template-areas:
     "name button-edit"
     "about about";
-  row-gap: 16px;
+  row-gap: 7px;
   column-gap: 18px;
 }
 
@@ -19,7 +19,7 @@
 @media screen and (max-width: 570px) {
   .profile__info {
     column-gap: 10px;
-    row-gap: 14px;
-    margin: 0 0 36px;
+    row-gap: 7px;
+    margin: 0 0 33px;
   }
 }
