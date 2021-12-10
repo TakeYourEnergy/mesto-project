@@ -3,7 +3,7 @@
   height: 32px;
   position: absolute;
   padding: 0;
-  background-image: url(../../../img/Close.svg);
+  background-image: url(../../../images/close.svg);
   background-color: transparent;
   border: none;
   top: -40px;
@@ -11,16 +11,7 @@
   background-size: contain;
 }
 
-@media screen and (min-width: 320px) and (max-width: 683px) {
-  .popup__button-close {
-    width: 20px;
-    height: 20px;
-    top: -36px;
-    right: 0px;
-  }
-}
-
-@media screen and (max-width: 319px) {
+@media screen and (max-width: 683px) {
   .popup__button-close {
     width: 20px;
     height: 20px;

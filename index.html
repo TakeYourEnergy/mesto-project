@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="author" content="Швецов Александр">
+  <meta name="author" content="швецов александр">
   <link rel="stylesheet" href="./pages/index.css">
   <title>MESTO</title>
 </head>
@@ -14,67 +14,67 @@
   <div class="page">
     <header class="header">
       <a href="#" class="header__link">
-        <img class="header__logo" src="./img/logo.svg" alt="логотип">
+        <img class="header__logo" src="./images/logo.svg" alt="логотип">
       </a>
     </header>
     <main class="main">
-      <section class="profile" aria-label="Профиль">
+      <section class="profile" aria-label="профиль">
         <div class="profile__avatar"></div>
         <div class="profile__info">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
-          <button class="button profile__button-edit" type="button" aria-label="Редактирование профиля"></button>
+          <button class="button profile__button-edit" type="button" aria-label="редактирование профиля"></button>
           <p class="profile__text">Исследователь океана</p>
         </div>
-        <button class="button profile__button-add" type="button" aria-label="Добавить место"></button>
+        <button class="button profile__button-add" type="button" aria-label="добавить место"></button>
       </section>
-      <section class="box" aria-label="Элементы">
+      <section class="box" aria-label="элементы">
         <div class="box__element">
-          <img src="./img/Karachaevsk.jpg" alt="Карачаевск" class="box__image">
+          <img src="./images/karachaevsk.jpg" alt="карачаевск" class="box__image">
           <div class="box__description">
             <h2 class="box__title">Карачаевск</h2>
-            <button class="box__heart box__heart_active" type="button" aria-label="Нравится"></button>
+            <button class="box__heart box__heart_active" type="button" aria-label="нравится"></button>
           </div>
         </div>
         <div class="box__element">
-          <img src="./img/Elbroos.jpg" alt="Гора Эльбрус" class="box__image">
+          <img src="./images/elbroos.jpg" alt="Гора Эльбрус" class="box__image">
+          <div class="box__description">
+            <h2 class="box__title">Гора Эльбрус</h2>
+            <button class="box__heart" type="button" aria-label="нравится"></button>
+          </div>
+        </div>
+        <div class="box__element">
+          <img src="./images/dombai.jpg" alt="Домбай" class="box__image">
+          <div class="box__description">
+            <h2 class="box__title">Домбай</h2>
+            <button class="box__heart" type="button" aria-label="нравится"></button>
+          </div>
+        </div>
+        <div class="box__element">
+          <img src="./images/elbroos.jpg" alt="гора эльбрус" class="box__image">
           <div class="box__description">
             <h2 class="box__title">Гора Эльбрус</h2>
             <button class="box__heart" type="button" aria-label="Нравится"></button>
           </div>
         </div>
         <div class="box__element">
-          <img src="./img/Dombai.jpg" alt="Домбай" class="box__image">
+          <img src="./images/dombai.jpg" alt="Домбай" class="box__image">
           <div class="box__description">
             <h2 class="box__title">Домбай</h2>
-            <button class="box__heart" type="button" aria-label="Нравится"></button>
+            <button class="box__heart" type="button" aria-label="нравится"></button>
           </div>
         </div>
         <div class="box__element">
-          <img src="./img/Elbroos.jpg" alt="Гора Эльбрус" class="box__image">
-          <div class="box__description">
-            <h2 class="box__title">Гора Эльбрус</h2>
-            <button class="box__heart" type="button" aria-label="Нравится"></button>
-          </div>
-        </div>
-        <div class="box__element">
-          <img src="./img/Dombai.jpg" alt="Домбай" class="box__image">
-          <div class="box__description">
-            <h2 class="box__title">Домбай</h2>
-            <button class="box__heart" type="button" aria-label="Нравится"></button>
-          </div>
-        </div>
-        <div class="box__element">
-          <img src="./img/Karachaevsk.jpg" alt="Карачаево-Черкесия" class="box__image">
+          <img src="./images/karachaevsk.jpg" alt="карачаево-черкесия" class="box__image">
           <div class="box__description">
             <h2 class="box__title">Карачаево-Черкесия</h2>
-            <button class="box__heart" type="button" aria-label="Нравится"></button>
+            <button class="box__heart" type="button" aria-label="нравится"></button>
           </div>
         </div>
       </section>
-      <footer class="footer">
-        <p class="footer__text">&copy; 2021 Mesto Russia</p>
-      </footer>
     </main>
+    <footer class="footer">
+      <p class="footer__text">&copy; 2021 Mesto Russia</p>
+    </footer>
   </div>
   <div class="popup popup_opened">
     <form class="popup__container" name="personal-information">
@@ -82,11 +82,11 @@
         <button class="button popup__button-close" type="button"></button>
         <fieldset class="popup__information">
           <legend class="popup__title">Редактировать профиль</legend>
-          <label class="popup__lable" for="name">
-            <input class="popup__input" id="name" type="text" placeholder="Введите имя" value="Жак-Ив Кусто">
+          <label class="popup__label" for="name">
+            <input class="popup__input" id="name" type="text" placeholder="введите имя" value="жак-ив кусто" name="full-name" required>
           </label>
-          <label class="popup__lable" for="about">
-            <input class="popup__input" id="about" type="text" placeholder="Деятельность" value="Исследователь океана">
+          <label class="popup__label" for="about">
+            <input class="popup__input" id="about" type="text" placeholder="деятельность" value="исследователь океана" name="profession" required>
           </label>
         </fieldset>
         <button class="popup__button-submit" type="submit">Сохранить</button>

@@ -1,6 +1,6 @@
 .profile__button-edit {
   grid-area: button-edit;
-  background-image: url(../../../img/PENCIL.svg);
+  background-image: url(../../../images/pencil.svg);
   background-repeat: no-repeat;
   background-position: center;
   background-color: inherit;

@@ -1,7 +1,7 @@
 .profile__button-add {
   width: 150px;
   height: 50px;
-  background-image: url(../../../img/PLUS.svg);
+  background-image: url(../../../images/plus.svg);
   background-repeat: no-repeat;
   background-position: center;
   padding: 17px 64px;
@@ -31,5 +31,6 @@
     width: 282px;
     height: 50px;
     padding: 17px 133px;
+    background-image: url(../../../images/plus-small.svg)
   }
 }
