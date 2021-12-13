@@ -77,21 +77,21 @@
     </footer>
   </div>
   <div class="popup popup_opened">
-    <form class="popup__container" name="personal-information">
-      <div class="popup__inner">
-        <button class="button popup__button-close" type="button"></button>
-        <fieldset class="popup__information">
-          <legend class="popup__title">Редактировать профиль</legend>
-          <label class="popup__label" for="name">
-            <input class="popup__input" id="name" type="text" placeholder="введите имя" value="жак-ив кусто" name="full-name" required>
-          </label>
-          <label class="popup__label" for="about">
-            <input class="popup__input" id="about" type="text" placeholder="деятельность" value="исследователь океана" name="profession" required>
-          </label>
-        </fieldset>
-        <button class="popup__button-submit" type="submit">Сохранить</button>
-      </div>
-    </form>
+    <div class="popup__container">
+      <button class="button popup__button-close" type="button"></button>
+      <form class="popup__information">
+        <legend class="popup__title">Редактировать профиль</legend>
+        <label class="popup__label" for="name">
+          <input class="popup__input" id="name" type="text" placeholder="введите имя" value="Жак-Ив Кусто"
+            name="full-name" required>
+        </label>
+        <label class="popup__label" for="about">
+          <input class="popup__input" id="about" type="text" placeholder="деятельность" value="Исследователь океана"
+            name="profession" required>
+        </label>
+      </form>
+      <button class="popup__button-submit" type="submit">Сохранить</button>
+    </div>
   </div>
 </body>
 
