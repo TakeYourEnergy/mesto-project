@@ -13,6 +13,7 @@
   color: #000;
 }
 
+
 @media screen and (max-width: 683px) {
   .popup__input {
     font-size: 14px;
