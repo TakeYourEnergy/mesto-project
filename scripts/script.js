@@ -26,44 +26,61 @@ const initialCards = [
 ];
 
 const buttonEdit = document.querySelector('.profile__button-edit')
-const popup = document.querySelector('.popup')
-const buttonClose = document.querySelector('.popup__button-close')
+const buttonAdd = document.querySelector('.profile__button-add')
+const popupEditProfile = document.querySelector('.popup_edit-profile')
+const popupAddCard = document.querySelector('.popup_add_card')
+const buttonClose = document.querySelectorAll('.popup__button-close')
 const formElement = document.querySelector('.popup__information') // !форма
 const nameInput = document.querySelector('.popup__input-name')
 const jobInput = document.querySelector('.popup__input-about')
 const profileName = document.querySelector('.profile__name')
 const profileText = document.querySelector('.profile__text')
 const hearts = document.querySelectorAll('.box__heart')
+const popups = document.querySelectorAll('.popup')
 
 
-
-
-//!открытие popup
-function openPopup() {
-  popup.classList.add('popup_opened')
+//!открытие popup Profile
+function openPopupProfile() {
+  popupEditProfile.classList.add('popup_opened')
   nameInput.value = profileName.textContent
   jobInput.value = profileText.textContent
 }
-buttonEdit.addEventListener('click', openPopup)
+buttonEdit.addEventListener('click', openPopupProfile)
+
+//!открытие popup New Card
+function openPopupNewCard() {
+  popupAddCard.classList.add('popup_opened')
+}
+buttonAdd.addEventListener('click', openPopupNewCard)
 
 //!закрытие popup - по крестику
 function closePopup() {
-  popup.classList.remove('popup_opened')
+  popups.forEach(item => item.classList.remove('popup_opened'))
 }
-buttonClose.addEventListener('click', closePopup)
+
+function closeClickOnCross() {
+  for (let i = 0; i < buttonClose.length; i++) {
+    buttonClose[i].addEventListener('click', (e) => {
+      popups[i].classList.remove('popup_opened')
+    })
+  }
+}
+closeClickOnCross()
 
 //!закрытие popup - по клику на фон (вне формы)
 function closePopupClickOutForm(e) {
-  if (e.target === popup) {
-    popup.classList.remove('popup_opened')
+  if (e.target === popupEditProfile || e.target === popupAddCard) {
+    closePopup()
   }
 }
-popup.addEventListener('click', closePopupClickOutForm)
+popups.forEach(item => {
+  item.addEventListener('click', closePopupClickOutForm)
+})
 
 //!закрытие popup - по клавише Esc
 function closePopupEsc(e) {
   if (e.code === "Escape") {
-    popup.classList.remove('popup_opened')
+    closePopup()
   }
 }
 document.addEventListener('keydown', closePopupEsc)
@@ -73,7 +90,7 @@ function formSubmitHandler(e) {
   e.preventDefault()
   profileName.textContent = nameInput.value
   profileText.textContent = jobInput.value
-  popup.classList.remove('popup_opened')
+  closePopup()
 }
 formElement.addEventListener('submit', formSubmitHandler)
 
@@ -88,6 +105,11 @@ function clickHeart() {
   }
 }
 clickHeart()
+
+
+
+
+
 
 
 
