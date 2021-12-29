@@ -106,6 +106,31 @@ function clickHeart() {
 }
 clickHeart()
 
+//!функция замены карточек
+function replaceCard() {
+  const imageBox = document.querySelectorAll('.box__image');
+  const titleImageBox = document.querySelectorAll('.box__title')
+
+
+  for (let i = 0; i < imageBox.length; i++) {
+    for (let j = 0; j < initialCards.length; j++) {
+      if (i === j) {
+        imageBox[i].src = initialCards[j].link
+      }
+    }
+  }
+
+  for (let k = 0; k < titleImageBox.length; k++) {
+    for (let t = 0; t < initialCards.length; t++) {
+      if (k === t) {
+        titleImageBox[k].innerText = initialCards[t].name
+      }
+    }
+  }
+}
+
+replaceCard()
+
 
 
 
