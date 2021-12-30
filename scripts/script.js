@@ -35,7 +35,6 @@ const nameInput = document.querySelector('.popup__input-name')
 const jobInput = document.querySelector('.popup__input-about')
 const profileName = document.querySelector('.profile__name')
 const profileText = document.querySelector('.profile__text')
-const hearts = document.querySelectorAll('.box__heart')
 const popups = document.querySelectorAll('.popup')
 
 
@@ -96,6 +95,8 @@ formElement.addEventListener('submit', formSubmitHandler)
 
 //!сердечко
 function clickHeart() {
+  const hearts = document.querySelectorAll('.box__heart')
+
   for (let i = 0; i < hearts.length; i++) {
     hearts[i].addEventListener('click', (e) => {
       if (e.target === hearts[i]) {
@@ -106,30 +107,43 @@ function clickHeart() {
 }
 clickHeart()
 
-//!функция замены карточек
-function replaceCard() {
+//!функция замены карточек из массива
+function replaceCard(arrayCards) {
   const imageBox = document.querySelectorAll('.box__image');
   const titleImageBox = document.querySelectorAll('.box__title')
 
-
   for (let i = 0; i < imageBox.length; i++) {
-    for (let j = 0; j < initialCards.length; j++) {
+    for (let j = 0; j < arrayCards.length; j++) {
       if (i === j) {
-        imageBox[i].src = initialCards[j].link
+        imageBox[i].src = arrayCards[j].link
       }
     }
   }
 
-  for (let k = 0; k < titleImageBox.length; k++) {
-    for (let t = 0; t < initialCards.length; t++) {
+  for (let k = 0; k <  titleImageBox.length; k++) {
+    for (let t = 0; t < arrayCards.length; t++) {
       if (k === t) {
-        titleImageBox[k].innerText = initialCards[t].name
+        titleImageBox[k].textContent = arrayCards[t].name
       }
     }
   }
 }
+replaceCard(initialCards) //? сделал возможность добавлять любой массив и вызывать функцию с ним
 
-replaceCard()
+//!функция удаления карточки по клику на корзинку
+function deleteCard() {
+  const boxDelete = document.querySelectorAll('.box__delete')
+  const boxElement = document.querySelectorAll('.box__element')
+
+  for (let i = 0; i < boxDelete.length; i++) {
+    boxDelete[i].addEventListener('click', (e) => {
+      if (e.target === boxDelete[i]) {
+        boxElement[i].remove()
+      }
+    })
+  }
+}
+deleteCard()
 
 
 
