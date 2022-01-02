@@ -36,7 +36,7 @@ const jobInput = document.querySelector('.popup__input-about')
 const profileName = document.querySelector('.profile__name')
 const profileText = document.querySelector('.profile__text')
 const popups = document.querySelectorAll('.popup')
-
+const titleImageBox = document.querySelectorAll('.box__title')
 
 
 //!открытие popup Profile
@@ -98,7 +98,6 @@ formElement.addEventListener('submit', formSubmitHandler)
 //!функция замены карточек из массива
 function replaceCard(arrayCards) {
   const imageBox = document.querySelectorAll('.box__image');
-  const titleImageBox = document.querySelectorAll('.box__title')
 
   for (let i = 0; i < imageBox.length; i++) {
     for (let j = 0; j < arrayCards.length; j++) {
@@ -140,12 +139,22 @@ function addCardForPopup(e) {
     e.target.closest('.box__element').remove()
   })
 
+  const openPhotoElement1 = templateCardCopy.querySelector('.box__image')
+  const popupPhoto1 = document.querySelector('.popup-photo')
+  const popupPhotoClick1 = document.querySelector('.popup-photo__click')
+  const popupPhotoTitle1 = document.querySelector('.popup-photo__title')
+  const titleImageBox1 = templateCardCopy.querySelector('.box__title')
+  openPhotoElement1.addEventListener('click', (e) => {
+    popupPhoto1.classList.add('popup_opened')
+    popupPhotoClick1.src = openPhotoElement1.src
+    popupPhotoTitle1.textContent = titleImageBox1.textContent
+    popupPhotoClick1.alt = titleImageBox1.textContent
+  })
+
   e.target.reset()
   closePopup()
 }
 formElementAdd.addEventListener('submit', addCardForPopup)
-
-
 
 //!сердечко - без этого не работает начальные 6 карточек с сердчечками
 function clickHeart() {
@@ -176,6 +185,25 @@ function deleteCard() {
 }
 deleteCard()
 
+//!добавление popup-photo
+function openPhoto() {
+  const openPhotoElement = document.querySelectorAll('.box__image')
+  const popupPhoto = document.querySelector('.popup-photo')
+  const popupPhotoClick = document.querySelector('.popup-photo__click')
+  const popupPhotoTitle = document.querySelector('.popup-photo__title')
+
+  for (let i = 0; i < openPhotoElement.length; i++) {
+    openPhotoElement[i].addEventListener('click', (e) => {
+      if (e.target === openPhotoElement[i]) {
+        popupPhoto.classList.add('popup_opened')
+        popupPhotoClick.src = openPhotoElement[i].src
+        popupPhotoTitle.textContent = titleImageBox[i].textContent
+        popupPhotoClick.alt = titleImageBox[i].textContent
+      }
+    })
+  }
+}
+openPhoto()
 
 
 
