@@ -24,186 +24,161 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
-
-const buttonEdit = document.querySelector('.profile__button-edit')
-const buttonAdd = document.querySelector('.profile__button-add')
+//! все по 1 popup - popup_edit-profile
 const popupEditProfile = document.querySelector('.popup_edit-profile')
+const buttonEdit = document.querySelector('.profile__button-edit')
+const formPopupEditProfile = popupEditProfile.querySelector('.popup__form')
+const buttonCloseProfile = popupEditProfile.querySelector('.popup__button-close')
+const nameInput = popupEditProfile.querySelector('.popup__input-name')
+const jobInput = popupEditProfile.querySelector('.popup__input-about')
+
+//! все по 2 popup - popup_add_card
 const popupAddCard = document.querySelector('.popup_add_card')
-const formElement = document.forms.peopleInformation // !форма 1
-const formElementAdd = document.forms.newPlaceInformation //!форма 2
-const nameInput = document.querySelector('.popup__input-name')
-const jobInput = document.querySelector('.popup__input-about')
+const buttonAdd = document.querySelector('.profile__button-add')
+const formPopupAddCard = popupAddCard.querySelector('.popup__form')
+const buttonCloseAddCard = popupAddCard.querySelector('.popup__button-close')
+const popupInputTitle = popupAddCard.querySelector('.popup__input-title')
+const popupUnputUrl = popupAddCard.querySelector('.popup__input-url')
+
+//! все по 3 popup - popup-photo
+const popupPhoto = document.querySelector('.popup-photo')
+const closePopupPhoto = popupPhoto.querySelector('.popup__button-close')
+const popupPhotoClick = popupPhoto.querySelector('.popup-photo__click')
+const popupPhotoTitle = popupPhoto.querySelector('.popup-photo__title')
+
+//! для progile__info (не в popup)
 const profileName = document.querySelector('.profile__name')
 const profileText = document.querySelector('.profile__text')
-const popups = document.querySelectorAll('.popup')
-const titleImageBox = document.querySelectorAll('.box__title')
 
+//!коробка для всех карточек
+const box = document.querySelector('.box')
+
+//!открытие popup - общая функция
+function openPopup(element) {
+  element.classList.add('popup_opened')
+}
+
+//!закрытие popup - общая функция
+function closePopup(element) {
+  element.classList.remove('popup_opened')
+}
 
 //!открытие popup Profile
 function openPopupProfile() {
-  popupEditProfile.classList.add('popup_opened')
   nameInput.value = profileName.textContent
   jobInput.value = profileText.textContent
-}
-buttonEdit.addEventListener('click', openPopupProfile)
-
-//!открытие popup New Card
-function openPopupNewCard() {
-  popupAddCard.classList.add('popup_opened')
-}
-buttonAdd.addEventListener('click', openPopupNewCard)
-
-//!закрытие popup - по крестику
-function closePopup() {
-  popups.forEach(item => item.classList.remove('popup_opened'))
+  openPopup(popupEditProfile)
 }
 
-function closeClickOnCross() {
-  const buttonClose = document.querySelectorAll('.popup__button-close')
-  for (let i = 0; i < buttonClose.length; i++) {
-    buttonClose[i].addEventListener('click', (e) => {
-      popups[i].classList.remove('popup_opened')
-    })
-  }
-}
-closeClickOnCross()
-
-//!закрытие popup - по клику на фон (вне формы)
-function closePopupClickOutForm(e) {
-  if (e.target === popupEditProfile || e.target === popupAddCard) {
-    closePopup()
-  }
-}
-popups.forEach(item => {
-  item.addEventListener('click', closePopupClickOutForm)
-})
-
-//!закрытие popup - по клавише Esc
-function closePopupEsc(e) {
-  if (e.code === "Escape") {
-    closePopup()
-  }
-}
-document.addEventListener('keydown', closePopupEsc)
-
-//!форма по яндексу
-function formSubmitHandler(e) {
+//!форма по яндексу - сохранить popup профиля в input при submit
+function formSubmitHandlerProfile(e) {
   e.preventDefault()
   profileName.textContent = nameInput.value
   profileText.textContent = jobInput.value
-  closePopup()
+  closePopup(popupEditProfile)
 }
-formElement.addEventListener('submit', formSubmitHandler)
 
-//!функция замены карточек из массива
-function replaceCard(arrayCards) {
-  const imageBox = document.querySelectorAll('.box__image');
-
-  for (let i = 0; i < imageBox.length; i++) {
-    for (let j = 0; j < arrayCards.length; j++) {
-      if (i === j) {
-        imageBox[i].src = arrayCards[j].link
-      }
-    }
-  }
-
-  for (let k = 0; k < titleImageBox.length; k++) {
-    for (let t = 0; t < arrayCards.length; t++) {
-      if (k === t) {
-        titleImageBox[k].textContent = arrayCards[t].name
-      }
-    }
-  }
+//!функция открытия popup-photo
+function openPopupPhoto(title, link) {
+  popupPhotoClick.src = link
+  popupPhotoClick.alt = title
+  popupPhotoTitle.textContent = title
+  openPopup(popupPhoto)
 }
-replaceCard(initialCards)
 
-//!функция добавления карточки через popup
-function addCardForPopup(e) {
-  e.preventDefault()
+//!сердечко лайк - общее
+function clickHeart(e) {
+  e.target.classList.toggle('box__heart_active')
+}
+
+//!удаляю первые 6 картинок
+const boxElementArr = document.querySelectorAll('.box__element')
+boxElementArr.forEach(item => item.remove())
+
+//!функция удаления карточки по клику на корзинку - общая
+function deleteCard(e) {
+  e.target.closest('.box__element').remove()
+}
+
+//!клонирование шаблона
+function cloneCard(item) {
   const templateCard = document.querySelector('#templateCards').content
   const templateCardCopy = templateCard.querySelector('.box__element').cloneNode(true)
-  const box = document.querySelector('.box')
-  box.prepend(templateCardCopy)
+  templateCardCopy.querySelector('.box__image').src = item.link
+  templateCardCopy.querySelector('.box__image').alt = item.name
+  templateCardCopy.querySelector('.box__title').textContent = item.name
 
-  templateCardCopy.querySelector('.box__image').src = e.target.urlToThePicture.value
-  templateCardCopy.querySelector('.box__image').alt = e.target.titleNewPlace.value
-  templateCardCopy.querySelector('.box__title').textContent = e.target.titleNewPlace.value
+  templateCardCopy.querySelector('.box__heart').addEventListener('click', clickHeart)
+  templateCardCopy.querySelector('.box__delete').addEventListener('click', deleteCard)
+  templateCardCopy.querySelector('.box__image').addEventListener('click', () => {
+    openPopupPhoto(item.name, item.link)
+  })
+  return templateCardCopy
+}
 
-  const hearts = templateCardCopy.querySelector('.box__heart')
-  hearts.addEventListener('click', (e) => {
-    e.target.classList.toggle('box__heart_active')
+//!функция вставки
+function addCard(item) {
+  box.prepend(cloneCard(item))
+}
+
+initialCards.forEach(el => addCard(el))
+
+function formSubmitHandlerAddNewCard(e) {
+  e.preventDefault()
+  addCard({
+    name: popupInputTitle.value,
+    link: popupUnputUrl.value
   })
 
-  const boxDelete = templateCardCopy.querySelector('.box__delete')
-  boxDelete.addEventListener('click', (e) => {
-    e.target.closest('.box__element').remove()
-  })
+  popupInputTitle.value = ""
+  popupUnputUrl.value = ""
 
-  const openPhotoElement1 = templateCardCopy.querySelector('.box__image')
-  const popupPhoto1 = document.querySelector('.popup-photo')
-  const popupPhotoClick1 = document.querySelector('.popup-photo__click')
-  const popupPhotoTitle1 = document.querySelector('.popup-photo__title')
-  const titleImageBox1 = templateCardCopy.querySelector('.box__title')
-  openPhotoElement1.addEventListener('click', (e) => {
-    popupPhoto1.classList.add('popup_opened')
-    popupPhotoClick1.src = openPhotoElement1.src
-    popupPhotoTitle1.textContent = titleImageBox1.textContent
-    popupPhotoClick1.alt = titleImageBox1.textContent
-  })
-
-  e.target.reset()
-  closePopup()
+  closePopup(popupAddCard)
 }
-formElementAdd.addEventListener('submit', addCardForPopup)
 
-//!сердечко - без этого не работает начальные 6 карточек с сердчечками
-function clickHeart() {
-  const hearts1 = document.querySelectorAll('.box__heart')
-
-  for (let i = 0; i < hearts1.length; i++) {
-    hearts1[i].addEventListener('click', (e) => {
-      if (e.target === hearts1[i]) {
-        hearts1[i].classList.toggle('box__heart_active')
-      }
-    })
+//!закрытие popup - по клику на фон (вне формы)
+const popups = document.querySelectorAll('.popup')
+function closePopupClickOutForm(e) {
+  if (e.target === popupEditProfile) {
+    closePopup(popupEditProfile)
+  }
+  if (e.target === popupAddCard) {
+    closePopup(popupAddCard)
+  }
+  if (e.target === popupPhoto) {
+    closePopup(popupPhoto)
   }
 }
-clickHeart()
 
-//!функция удаления карточки по клику на корзинку - без этого не работает начальные 6 карточек с сердчечками
-function deleteCard() {
-  const boxDelete1 = document.querySelectorAll('.box__delete')
-  const boxElement1 = document.querySelectorAll('.box__element')
-
-  for (let i = 0; i < boxDelete1.length; i++) {
-    boxDelete1[i].addEventListener('click', (e) => {
-      if (e.target === boxDelete1[i]) {
-        boxElement1[i].remove()
-      }
-    })
+popups.forEach(item => {
+  item.addEventListener('click', closePopupClickOutForm)
+})
+buttonEdit.addEventListener('click', openPopupProfile)
+buttonCloseProfile.addEventListener('click', () => {
+  closePopup(popupEditProfile)
+})
+buttonAdd.addEventListener('click', () => {
+  openPopup(popupAddCard)
+})
+buttonCloseAddCard.addEventListener('click', () => {
+  closePopup(popupAddCard)
+})
+formPopupEditProfile.addEventListener('submit', formSubmitHandlerProfile);
+formPopupAddCard.addEventListener('submit', formSubmitHandlerAddNewCard)
+closePopupPhoto.addEventListener('click', () => {
+  closePopup(popupPhoto)
+})
+document.addEventListener('keydown', (e) => {
+  if (e.code === "Escape") {
+    closePopup(popupEditProfile)
+    closePopup(popupAddCard)
+    closePopup(popupPhoto)
   }
-}
-deleteCard()
+})
 
-//!добавление popup-photo
-function openPhoto() {
-  const openPhotoElement = document.querySelectorAll('.box__image')
-  const popupPhoto = document.querySelector('.popup-photo')
-  const popupPhotoClick = document.querySelector('.popup-photo__click')
-  const popupPhotoTitle = document.querySelector('.popup-photo__title')
 
-  for (let i = 0; i < openPhotoElement.length; i++) {
-    openPhotoElement[i].addEventListener('click', (e) => {
-      if (e.target === openPhotoElement[i]) {
-        popupPhoto.classList.add('popup_opened')
-        popupPhotoClick.src = openPhotoElement[i].src
-        popupPhotoTitle.textContent = titleImageBox[i].textContent
-        popupPhotoClick.alt = titleImageBox[i].textContent
-      }
-    })
-  }
-}
-openPhoto()
+
+
 
 
 
