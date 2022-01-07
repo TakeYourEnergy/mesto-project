@@ -29,13 +29,14 @@ const buttonEdit = document.querySelector('.profile__button-edit')
 const buttonAdd = document.querySelector('.profile__button-add')
 const popupEditProfile = document.querySelector('.popup_edit-profile')
 const popupAddCard = document.querySelector('.popup_add_card')
-const buttonClose = document.querySelectorAll('.popup__button-close')
-const formElement = document.querySelector('.popup__information') // !форма
+const formElement = document.forms.peopleInformation // !форма 1
+const formElementAdd = document.forms.newPlaceInformation //!форма 2
 const nameInput = document.querySelector('.popup__input-name')
 const jobInput = document.querySelector('.popup__input-about')
 const profileName = document.querySelector('.profile__name')
 const profileText = document.querySelector('.profile__text')
 const popups = document.querySelectorAll('.popup')
+const titleImageBox = document.querySelectorAll('.box__title')
 
 
 //!открытие popup Profile
@@ -58,6 +59,7 @@ function closePopup() {
 }
 
 function closeClickOnCross() {
+  const buttonClose = document.querySelectorAll('.popup__button-close')
   for (let i = 0; i < buttonClose.length; i++) {
     buttonClose[i].addEventListener('click', (e) => {
       popups[i].classList.remove('popup_opened')
@@ -93,24 +95,9 @@ function formSubmitHandler(e) {
 }
 formElement.addEventListener('submit', formSubmitHandler)
 
-//!сердечко
-function clickHeart() {
-  const hearts = document.querySelectorAll('.box__heart')
-
-  for (let i = 0; i < hearts.length; i++) {
-    hearts[i].addEventListener('click', (e) => {
-      if (e.target === hearts[i]) {
-        hearts[i].classList.toggle('box__heart_active')
-      }
-    })
-  }
-}
-clickHeart()
-
 //!функция замены карточек из массива
 function replaceCard(arrayCards) {
   const imageBox = document.querySelectorAll('.box__image');
-  const titleImageBox = document.querySelectorAll('.box__title')
 
   for (let i = 0; i < imageBox.length; i++) {
     for (let j = 0; j < arrayCards.length; j++) {
@@ -128,27 +115,95 @@ function replaceCard(arrayCards) {
     }
   }
 }
-replaceCard(initialCards) //? сделал возможность добавлять любой массив и вызывать функцию с ним
+replaceCard(initialCards)
 
-//!функция удаления карточки по клику на корзинку
+//!функция добавления карточки через popup
+function addCardForPopup(e) {
+  e.preventDefault()
+  const templateCard = document.querySelector('#templateCards').content
+  const templateCardCopy = templateCard.querySelector('.box__element').cloneNode(true)
+  const box = document.querySelector('.box')
+  box.prepend(templateCardCopy)
+
+  templateCardCopy.querySelector('.box__image').src = e.target.urlToThePicture.value
+  templateCardCopy.querySelector('.box__image').alt = e.target.titleNewPlace.value
+  templateCardCopy.querySelector('.box__title').textContent = e.target.titleNewPlace.value
+
+  const hearts = templateCardCopy.querySelector('.box__heart')
+  hearts.addEventListener('click', (e) => {
+    e.target.classList.toggle('box__heart_active')
+  })
+
+  const boxDelete = templateCardCopy.querySelector('.box__delete')
+  boxDelete.addEventListener('click', (e) => {
+    e.target.closest('.box__element').remove()
+  })
+
+  const openPhotoElement1 = templateCardCopy.querySelector('.box__image')
+  const popupPhoto1 = document.querySelector('.popup-photo')
+  const popupPhotoClick1 = document.querySelector('.popup-photo__click')
+  const popupPhotoTitle1 = document.querySelector('.popup-photo__title')
+  const titleImageBox1 = templateCardCopy.querySelector('.box__title')
+  openPhotoElement1.addEventListener('click', (e) => {
+    popupPhoto1.classList.add('popup_opened')
+    popupPhotoClick1.src = openPhotoElement1.src
+    popupPhotoTitle1.textContent = titleImageBox1.textContent
+    popupPhotoClick1.alt = titleImageBox1.textContent
+  })
+
+  e.target.reset()
+  closePopup()
+}
+formElementAdd.addEventListener('submit', addCardForPopup)
+
+//!сердечко - без этого не работает начальные 6 карточек с сердчечками
+function clickHeart() {
+  const hearts1 = document.querySelectorAll('.box__heart')
+
+  for (let i = 0; i < hearts1.length; i++) {
+    hearts1[i].addEventListener('click', (e) => {
+      if (e.target === hearts1[i]) {
+        hearts1[i].classList.toggle('box__heart_active')
+      }
+    })
+  }
+}
+clickHeart()
+
+//!функция удаления карточки по клику на корзинку - без этого не работает начальные 6 карточек с сердчечками
 function deleteCard() {
-  const boxDelete = document.querySelectorAll('.box__delete')
-  const boxElement = document.querySelectorAll('.box__element')
+  const boxDelete1 = document.querySelectorAll('.box__delete')
+  const boxElement1 = document.querySelectorAll('.box__element')
 
-  for (let i = 0; i < boxDelete.length; i++) {
-    boxDelete[i].addEventListener('click', (e) => {
-      if (e.target === boxDelete[i]) {
-        boxElement[i].remove()
+  for (let i = 0; i < boxDelete1.length; i++) {
+    boxDelete1[i].addEventListener('click', (e) => {
+      if (e.target === boxDelete1[i]) {
+        boxElement1[i].remove()
       }
     })
   }
 }
 deleteCard()
 
+//!добавление popup-photo
+function openPhoto() {
+  const openPhotoElement = document.querySelectorAll('.box__image')
+  const popupPhoto = document.querySelector('.popup-photo')
+  const popupPhotoClick = document.querySelector('.popup-photo__click')
+  const popupPhotoTitle = document.querySelector('.popup-photo__title')
 
-
-
-
+  for (let i = 0; i < openPhotoElement.length; i++) {
+    openPhotoElement[i].addEventListener('click', (e) => {
+      if (e.target === openPhotoElement[i]) {
+        popupPhoto.classList.add('popup_opened')
+        popupPhotoClick.src = openPhotoElement[i].src
+        popupPhotoTitle.textContent = titleImageBox[i].textContent
+        popupPhotoClick.alt = titleImageBox[i].textContent
+      }
+    })
+  }
+}
+openPhoto()
 
 
 

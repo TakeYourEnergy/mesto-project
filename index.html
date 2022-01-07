@@ -85,7 +85,7 @@
   <div class="popup popup_edit-profile">
     <div class="popup__container">
       <button class="button popup__button-close" type="button"></button>
-      <form class="popup__form popup__information" name="people-information">
+      <form class="popup__form popup__information" name="peopleInformation">
         <h2 class="popup__title">Редактировать профиль</h2>
         <label class="popup__label" for="name">
           <input class="popup__input popup__input-name" id="name" type="text" placeholder="введите имя" name="full-name"
@@ -95,28 +95,44 @@
           <input class="popup__input popup__input-about" id="about" type="text" placeholder="деятельность"
             name="profession" required>
         </label>
-        <button class="popup__button-submit" type="submit">Сохранить</button>
+        <button class="popup__button-submit popup__button-submit-save" type="submit">Сохранить</button>
       </form>
     </div>
   </div>
   <div class="popup popup_add_card">
     <div class="popup__container">
       <button class="button popup__button-close" type="button"></button>
-      <form class="popup__form popup__new-place-add" name="new-place-information">
+      <form class="popup__form popup__new-place-add" name="newPlaceInformation">
         <h2 class="popup__title">Новое место</h2>
         <label class="popup__label" for="title  ">
-          <input class="popup__input popup__input-name" id="title" type="text" placeholder="Название"
-            name="title-new-place" required>
+          <input class="popup__input popup__input-title" id="title" type="text" placeholder="Название"
+            name="titleNewPlace" required>
         </label>
         <label class="popup__label" for="url">
-          <input class="popup__input popup__input-about" id="url" type="url" placeholder="Ссылка на картинку"
-            name="url-to-the-picture" required>
+          <input class="popup__input popup__input-url" id="url" type="url" placeholder="Ссылка на картинку"
+            name="urlToThePicture" required>
         </label>
-        <button class="popup__button-submit" type="submit">Создать</button>
+        <button class="popup__button-submit popup__button-submit-create" type="submit">Создать</button>
       </form>
     </div>
   </div>
-
+  <div class="popup popup-photo">
+    <div class="popup-photo__container">
+      <button class="button popup__button-close" type="button"></button>
+      <img src="." alt="." class="popup-photo__click">
+      <h3 class="popup-photo__title"></h3>
+    </div>
+  </div>
+  <template class="cards__list" id="templateCards">
+    <div class="box__element">
+      <img src="." alt="." class="box__image">
+      <button class="box__delete" type="button"></button>
+      <div class="box__description">
+        <h2 class="box__title"></h2>
+        <button class="box__heart" type="button" aria-label="нравится"></button>
+      </div>
+    </div>
+  </template>
   <script src="./scripts/script.js"></script>
 </body>
 
