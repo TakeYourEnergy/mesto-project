@@ -120,7 +120,7 @@ function replaceCard(arrayCards) {
     }
   }
 
-  for (let k = 0; k <  titleImageBox.length; k++) {
+  for (let k = 0; k < titleImageBox.length; k++) {
     for (let t = 0; t < arrayCards.length; t++) {
       if (k === t) {
         titleImageBox[k].textContent = arrayCards[t].name
