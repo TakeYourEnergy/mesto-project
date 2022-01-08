@@ -86,12 +86,13 @@ function deleteCard(e) {
 function cloneCard(item) {
   const templateCard = document.querySelector('#templateCards').content
   const templateCardCopy = templateCard.querySelector('.box__element').cloneNode(true)
-  templateCardCopy.querySelector('.box__image').src = item.link
-  templateCardCopy.querySelector('.box__image').alt = item.name
+  const templateCardBoxImage = templateCardCopy.querySelector('.box__image')
+  templateCardBoxImage.src = item.link
+  templateCardBoxImage.alt = item.name
   templateCardCopy.querySelector('.box__title').textContent = item.name
   templateCardCopy.querySelector('.box__heart').addEventListener('click', clickHeart)
   templateCardCopy.querySelector('.box__delete').addEventListener('click', deleteCard)
-  templateCardCopy.querySelector('.box__image').addEventListener('click', () => {
+  templateCardBoxImage.addEventListener('click', () => {
     openPopupPhoto(item.name, item.link)
   })
   return templateCardCopy
