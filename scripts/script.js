@@ -91,7 +91,6 @@ function cloneCard(item) {
   templateCardCopy.querySelector('.box__image').src = item.link
   templateCardCopy.querySelector('.box__image').alt = item.name
   templateCardCopy.querySelector('.box__title').textContent = item.name
-
   templateCardCopy.querySelector('.box__heart').addEventListener('click', clickHeart)
   templateCardCopy.querySelector('.box__delete').addEventListener('click', deleteCard)
   templateCardCopy.querySelector('.box__image').addEventListener('click', () => {
@@ -112,9 +111,7 @@ function formSubmitHandlerAddNewCard(e) {
     name: popupInputTitle.value,
     link: popupUnputUrl.value
   })
-
   e.target.reset()
-
   closePopup(popupAddCard)
 }
 
