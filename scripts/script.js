@@ -56,11 +56,14 @@ const box = document.querySelector('.box')
 //!открытие popup - общая функция
 function openPopup(element) {
   element.classList.add('popup_opened')
+  //убрал прокрутку фона во время открытого popup
+  document.body.style.overflow = 'hidden'
 }
 
 //!закрытие popup - общая функция
 function closePopup(element) {
   element.classList.remove('popup_opened')
+  document.body.style.overflow = 'visible'
 }
 
 //!открытие popup Profile
@@ -129,9 +132,8 @@ function formSubmitHandlerAddNewCard(e) {
     name: popupInputTitle.value,
     link: popupUnputUrl.value
   })
-
-  popupInputTitle.value = ""
-  popupUnputUrl.value = ""
+  
+  e.target.reset()
 
   closePopup(popupAddCard)
 }
