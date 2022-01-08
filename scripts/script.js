@@ -132,7 +132,7 @@ function formSubmitHandlerAddNewCard(e) {
     name: popupInputTitle.value,
     link: popupUnputUrl.value
   })
-  
+
   e.target.reset()
 
   closePopup(popupAddCard)
@@ -159,13 +159,13 @@ buttonEdit.addEventListener('click', openPopupProfile)
 buttonCloseProfile.addEventListener('click', () => {
   closePopup(popupEditProfile)
 })
+formPopupEditProfile.addEventListener('submit', formSubmitHandlerProfile);
 buttonAdd.addEventListener('click', () => {
   openPopup(popupAddCard)
 })
 buttonCloseAddCard.addEventListener('click', () => {
   closePopup(popupAddCard)
 })
-formPopupEditProfile.addEventListener('submit', formSubmitHandlerProfile);
 formPopupAddCard.addEventListener('submit', formSubmitHandlerAddNewCard)
 closePopupPhoto.addEventListener('click', () => {
   closePopup(popupPhoto)
