@@ -43,6 +43,7 @@ const popupPhotoTitle = popupPhoto.querySelector('.popup-photo__title')
 const profileName = document.querySelector('.profile__name')
 const profileText = document.querySelector('.profile__text')
 const box = document.querySelector('.box')
+const popups = document.querySelectorAll('.popup')
 
 function openPopup(element) {
   element.classList.add('popup_opened')
@@ -115,7 +116,6 @@ function formSubmitHandlerAddNewCard(e) {
   closePopup(popupAddCard)
 }
 
-const popups = document.querySelectorAll('.popup')
 function closePopupClickOutForm(e) {
   if (e.target === popupEditProfile) {
     closePopup(popupEditProfile)
