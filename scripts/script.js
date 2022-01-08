@@ -79,9 +79,6 @@ function clickHeart(e) {
   e.target.classList.toggle('box__heart_active')
 }
 
-const boxElementArr = document.querySelectorAll('.box__element')
-boxElementArr.forEach(item => item.remove())
-
 function deleteCard(e) {
   e.target.closest('.box__element').remove()
 }
