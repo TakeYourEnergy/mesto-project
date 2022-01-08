@@ -61,7 +61,7 @@ function openPopupProfile() {
   openPopup(popupEditProfile)
 }
 
-function formSubmitHandlerProfile(e) {
+function hanldeProfileFormSubmit(e) {
   e.preventDefault()
   profileName.textContent = nameInput.value
   profileText.textContent = jobInput.value
@@ -106,7 +106,7 @@ function addCard(item) {
 
 initialCards.forEach(el => addCard(el))
 
-function formSubmitHandlerAddNewCard(e) {
+function hanldeAddNewCardFormSubmit(e) {
   e.preventDefault()
   addCard({
     name: popupInputTitle.value,
@@ -135,14 +135,14 @@ buttonEdit.addEventListener('click', openPopupProfile)
 buttonCloseProfile.addEventListener('click', () => {
   closePopup(popupEditProfile)
 })
-formPopupEditProfile.addEventListener('submit', formSubmitHandlerProfile);
+formPopupEditProfile.addEventListener('submit', hanldeProfileFormSubmit);
 buttonAdd.addEventListener('click', () => {
   openPopup(popupAddCard)
 })
 buttonCloseAddCard.addEventListener('click', () => {
   closePopup(popupAddCard)
 })
-formPopupAddCard.addEventListener('submit', formSubmitHandlerAddNewCard)
+formPopupAddCard.addEventListener('submit', hanldeAddNewCardFormSubmit)
 closePopupPhoto.addEventListener('click', () => {
   closePopup(popupPhoto)
 })
