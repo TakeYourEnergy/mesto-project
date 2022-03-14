@@ -114,15 +114,11 @@ function hanldeAddNewCardFormSubmit(e) {
   closePopup(popupAddCard)
 }
 
+//!закрытие по клику на фон вне popup - overlay
 function closePopupClickOutForm(e) {
-  if (e.target === popupEditProfile) {
-    closePopup(popupEditProfile)
-  }
-  if (e.target === popupAddCard) {
-    closePopup(popupAddCard)
-  }
-  if (e.target === popupPhoto) {
-    closePopup(popupPhoto)
+  console.log(e.target.classList.contains('popup'));
+  if (e.target.classList.contains('popup')) {
+    closePopup(e.target)
   }
 }
 
@@ -144,11 +140,11 @@ formPopupAddCard.addEventListener('submit', hanldeAddNewCardFormSubmit)
 closePopupPhoto.addEventListener('click', () => {
   closePopup(popupPhoto)
 })
+
+//!закрытие popup по esc
 document.addEventListener('keydown', (e) => {
-  if (e.code === "Escape") {
-    closePopup(popupEditProfile)
-    closePopup(popupAddCard)
-    closePopup(popupPhoto)
+  if (e.key === "Escape") {
+    closePopup(document.querySelector('.popup_opened'))
   }
 })
 
