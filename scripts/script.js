@@ -24,24 +24,30 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
+
 const popupEditProfile = document.querySelector('.popup_edit-profile')
 const buttonEdit = document.querySelector('.profile__button-edit')
 const formPopupEditProfile = popupEditProfile.querySelector('.popup__form')
 const buttonCloseProfile = popupEditProfile.querySelector('.popup__button-close')
 const nameInput = popupEditProfile.querySelector('.popup__input-name')
 const jobInput = popupEditProfile.querySelector('.popup__input-about')
+const buttonProfile = popupEditProfile.querySelector('.popup__button-submit-save')
+
 const popupAddCard = document.querySelector('.popup_add_card')
 const buttonAdd = document.querySelector('.profile__button-add')
 const formPopupAddCard = popupAddCard.querySelector('.popup__form')
 const buttonCloseAddCard = popupAddCard.querySelector('.popup__button-close')
 const popupInputTitle = popupAddCard.querySelector('.popup__input-title')
 const popupUnputUrl = popupAddCard.querySelector('.popup__input-url')
+const buttonAddCard = popupAddCard.querySelector('.popup__button-submit-create')
+
 const popupPhoto = document.querySelector('.popup-photo')
 const closePopupPhoto = popupPhoto.querySelector('.popup__button-close')
 const popupPhotoClick = popupPhoto.querySelector('.popup-photo__click')
 const popupPhotoTitle = popupPhoto.querySelector('.popup-photo__title')
 const profileName = document.querySelector('.profile__name')
 const profileText = document.querySelector('.profile__text')
+
 const box = document.querySelector('.box')
 const popups = document.querySelectorAll('.popup')
 
@@ -116,7 +122,6 @@ function hanldeAddNewCardFormSubmit(e) {
 
 //!закрытие по клику на фон вне popup - overlay
 function closePopupClickOutForm(e) {
-  console.log(e.target.classList.contains('popup'));
   if (e.target.classList.contains('popup')) {
     closePopup(e.target)
   }
@@ -129,14 +134,18 @@ buttonEdit.addEventListener('click', openPopupProfile)
 buttonCloseProfile.addEventListener('click', () => {
   closePopup(popupEditProfile)
 })
+
 formPopupEditProfile.addEventListener('submit', hanldeProfileFormSubmit);
+
 buttonAdd.addEventListener('click', () => {
   openPopup(popupAddCard)
 })
 buttonCloseAddCard.addEventListener('click', () => {
   closePopup(popupAddCard)
 })
+
 formPopupAddCard.addEventListener('submit', hanldeAddNewCardFormSubmit)
+
 closePopupPhoto.addEventListener('click', () => {
   closePopup(popupPhoto)
 })
