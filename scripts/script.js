@@ -68,7 +68,6 @@ function openPopupProfile() {
 }
 
 function hanldeProfileFormSubmit(e) {
-  e.preventDefault()
   profileName.textContent = nameInput.value
   profileText.textContent = jobInput.value
   closePopup(popupEditProfile)
@@ -111,7 +110,6 @@ function addCard(item) {
 initialCards.forEach(el => addCard(el))
 
 function hanldeAddNewCardFormSubmit(e) {
-  e.preventDefault()
   addCard({
     name: popupInputTitle.value,
     link: popupUnputUrl.value
