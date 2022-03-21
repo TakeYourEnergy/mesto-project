@@ -36,7 +36,7 @@ const hasInvalidInput = (inputList) => {
   })
 }
 
-//! 6)отвечает за блокировку кнопки «Отправить»
+//! 6)отвечает за блокировку кнопки
 const toggleButtonState = (inputList, buttonElement, config) => {
   if (hasInvalidInput(inputList)) {
     buttonElement.classList.add(config.inactiveButtonClass)
@@ -51,7 +51,7 @@ const toggleButtonState = (inputList, buttonElement, config) => {
 const setEventListeners = (formElement, config) => {
   const inputList = Array.from(formElement.querySelectorAll(config.inputSelector))
   const buttonElement = formElement.querySelector(config.submitButtonSelector)
-  
+
   inputList.forEach(inputElement => {
     inputElement.addEventListener('input', () => {
       checkInputValidity(formElement, inputElement, config);
@@ -71,10 +71,24 @@ const enableValidation = (config) => {
   })
 }
 
+function deleteErrorOpenPopup(formElement, config) {
+  const inputList = Array.from(formElement.querySelectorAll(config.inputSelector))
+  const buttonElement = formElement.querySelector(config.submitButtonSelector)
+  toggleButtonState(inputList, buttonElement, config)
+
+  inputList.forEach(inputElement => {
+    hideInputError(formElement, inputElement, config)
+  })
+}
+
+const openAddCard = function () {
+  formPopupAddCard.reset()
+  openPopup(popupAddCard)
+  deleteErrorOpenPopup(popupAddCard , validationConfig)
+};
+
+buttonAdd.addEventListener('click', openAddCard);
+
+
 enableValidation(validationConfig)
-
-
-
-
-
 

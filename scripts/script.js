@@ -51,12 +51,22 @@ const profileText = document.querySelector('.profile__text')
 const box = document.querySelector('.box')
 const popups = document.querySelectorAll('.popup')
 
+//!закрытие popup по esc
+const handleEscUp = (e) => {
+  const activePopup = document.querySelector('.popup_opened');
+  if (e.key === "Escape") {
+    closePopup(activePopup)
+  }
+}
+// !функция открытия
 function openPopup(element) {
+  document.addEventListener('keydown', handleEscUp)
   element.classList.add('popup_opened')
   document.body.style.overflow = 'hidden'
 }
-
+// !функция закрытия
 function closePopup(element) {
+  document.removeEventListener('keydown', handleEscUp);
   element.classList.remove('popup_opened')
   document.body.style.overflow = 'visible'
 }
@@ -116,11 +126,12 @@ function hanldeAddNewCardFormSubmit(e) {
   })
   e.target.reset()
   closePopup(popupAddCard)
+  buttonAddCard.setAttribute('disabled', true)
 }
 
-//!закрытие по клику на фон вне popup - overlay
+//!закрытие по клику на фон - overlay
 function closePopupClickOutForm(e) {
-  if (e.target.classList.contains('popup')) {
+  if (e.target.classList.contains('popup') || e.target.classList.contains('popup__button-close')) {
     closePopup(e.target)
   }
 }
@@ -129,6 +140,11 @@ popups.forEach(item => {
   item.addEventListener('click', closePopupClickOutForm)
 })
 buttonEdit.addEventListener('click', openPopupProfile)
+
+buttonEdit.addEventListener('click', () => {
+  deleteErrorOpenPopup(formPopupEditProfile, validationConfig)
+})
+
 buttonCloseProfile.addEventListener('click', () => {
   closePopup(popupEditProfile)
 })
@@ -148,12 +164,9 @@ closePopupPhoto.addEventListener('click', () => {
   closePopup(popupPhoto)
 })
 
-//!закрытие popup по esc
-document.addEventListener('keydown', (e) => {
-  if (e.key === "Escape") {
-    closePopup(document.querySelector('.popup_opened'))
-  }
-})
+
+
+
 
 
 
