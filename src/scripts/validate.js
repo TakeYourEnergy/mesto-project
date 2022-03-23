@@ -1,3 +1,6 @@
+export { validationConfig, showInputError, hideInputError, checkInputValidity, hasInvalidInput, toggleButtonState, setEventListeners, enableValidation, deleteErrorOpenPopup, openAddCard }
+import { formPopupAddCard, popupAddCard } from './const.js'
+import { openPopup } from './modal.js'
 const validationConfig = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
@@ -84,11 +87,8 @@ function deleteErrorOpenPopup(formElement, config) {
 const openAddCard = function () {
   formPopupAddCard.reset()
   openPopup(popupAddCard)
-  deleteErrorOpenPopup(popupAddCard , validationConfig)
+  deleteErrorOpenPopup(popupAddCard, validationConfig)
 };
 
-buttonAdd.addEventListener('click', openAddCard);
 
-
-enableValidation(validationConfig)
 

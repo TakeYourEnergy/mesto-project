@@ -6,7 +6,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="швецов александр">
-  <link rel="stylesheet" href="./pages/index.css">
   <title>MESTO</title>
 </head>
 
@@ -14,7 +13,7 @@
   <div class="page">
     <header class="header">
       <a href="#" class="header__link">
-        <img class="header__logo" src="./images/logo.svg" alt="логотип">
+        <img class="header__logo" src="<%=require('./images/logo.svg')%>" alt="логотип">
       </a>
     </header>
     <main class="main">
@@ -67,7 +66,8 @@
             name="urlToThePicture" required>
           <span class="popup__error url-error">Необходимо заполнить данное поле</span>
         </label>
-        <button disabled="true" class="popup__button-submit popup__button-submit-create popup__button_disabled" type="submit">Создать</button>
+        <button disabled="true" class="popup__button-submit popup__button-submit-create popup__button_disabled"
+          type="submit">Создать</button>
       </form>
     </div>
   </div>
@@ -88,8 +88,6 @@
       </div>
     </div>
   </template>
-  <script src="./scripts/script.js"></script>
-  <script src="./scripts/validate.js"></script>
 </body>
 
 </html>
