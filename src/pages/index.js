@@ -1,8 +1,8 @@
 import '../pages/index.css';
-import { openPopup, closePopup, closePopupClickOutForm, openPopupProfile, hanldeProfileFormSubmit, hanldeAddNewCardFormSubmit } from '../scripts/modal.js';
-import { addCard } from '../scripts/card.js';
-import { validationConfig, enableValidation, deleteErrorOpenPopup, openAddCard } from '../scripts/validate.js';
-import {initialCards, popupEditProfile, buttonEdit, formPopupEditProfile, buttonCloseProfile, buttonAdd, formPopupAddCard, buttonCloseAddCard, popupPhoto, closePopupPhoto, popups, popupAddCard} from '../scripts/const.js';
+import { openPopup, closePopup, closePopupClickOutForm, openPopupProfile, hanldeProfileFormSubmit, hanldeAddNewCardFormSubmit } from '../componets/modal.js';
+import { addCard } from '../componets/card.js';
+import { validationConfig, enableValidation, deleteErrorOpenPopup, openAddCard } from '../componets/validate.js';
+import {initialCards, popupEditProfile, buttonEdit, formPopupEditProfile, buttonCloseProfile, buttonAdd, formPopupAddCard, buttonCloseAddCard, popupPhoto, closePopupPhoto, popups, popupAddCard} from '../componets/const.js';
 
 
 initialCards.forEach(el => addCard(el))

@@ -21,8 +21,6 @@ function addCard(item) {
   box.prepend(cloneCard(item))
 }
 
-// initialCards.forEach(el => addCard(el))
-
 function deleteCard(e) {
   e.target.closest('.box__element').remove()
 }
