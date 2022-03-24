@@ -1,12 +1,35 @@
 import '../pages/index.css';
-import { openPopup, closePopup, closePopupClickOutForm, openPopupProfile, hanldeProfileFormSubmit, hanldeAddNewCardFormSubmit } from '../componets/modal.js';
-import { addCard } from '../componets/card.js';
-import { validationConfig, enableValidation, deleteErrorOpenPopup, openAddCard } from '../componets/validate.js';
-import {initialCards, popupEditProfile, buttonEdit, formPopupEditProfile, buttonCloseProfile, buttonAdd, formPopupAddCard, buttonCloseAddCard, popupPhoto, closePopupPhoto, popups, popupAddCard} from '../componets/const.js';
+import { openPopup, closePopup, closePopupClickOutForm } from '../components/modal.js';
+import { addCard } from '../components/card.js';
+import { validationConfig, enableValidation, deleteErrorOpenPopup, openAddCard } from '../components/validate.js';
+import { initialCards, buttonEdit, formPopupEditProfile, buttonCloseProfile, buttonAdd, formPopupAddCard, buttonCloseAddCard, popupPhoto, popupPhotoCloseButton, popups, popupAddCard, popupEditProfile, nameInput, jobInput, popupInputTitle, popupInputUrl, buttonAddCard, profileName, profileText } from '../components/const.js';
 
 
 initialCards.forEach(el => addCard(el))
 enableValidation(validationConfig)
+
+
+function openPopupProfile() {
+  nameInput.value = profileName.textContent
+  jobInput.value = profileText.textContent
+  openPopup(popupEditProfile)
+}
+
+function hanldeProfileFormSubmit() {
+  profileName.textContent = nameInput.value
+  profileText.textContent = jobInput.value
+  closePopup(popupEditProfile)
+}
+
+function hanldeAddNewCardFormSubmit(e) {
+  addCard({
+    name: popupInputTitle.value,
+    link: popupInputUrl.value
+  })
+  e.target.reset()
+  closePopup(popupAddCard)
+  buttonAddCard.setAttribute('disabled', true)
+}
 
 
 popups.forEach(item => {
@@ -33,7 +56,7 @@ buttonCloseAddCard.addEventListener('click', () => {
 
 formPopupAddCard.addEventListener('submit', hanldeAddNewCardFormSubmit)
 
-closePopupPhoto.addEventListener('click', () => {
+popupPhotoCloseButton.addEventListener('click', () => {
   closePopup(popupPhoto)
 })
 

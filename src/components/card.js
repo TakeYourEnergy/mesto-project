@@ -1,6 +1,13 @@
 export { cloneCard, addCard, deleteCard, clickHeart };
-import { box } from './const.js'
-import { openPopupPhoto } from './modal.js'
+import { box, popupPhotoImg, popupPhotoTitle, popupPhoto } from './const.js';
+import { openPopup } from './modal.js';
+
+function openPopupPhoto(title, link) {
+  popupPhotoImg.src = link
+  popupPhotoImg.alt = title
+  popupPhotoTitle.textContent = title
+  openPopup(popupPhoto)
+}
 
 function cloneCard(item) {
   const templateCard = document.querySelector('#templateCards').content

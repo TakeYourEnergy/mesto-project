@@ -1,6 +1,7 @@
-export { validationConfig, showInputError, hideInputError, checkInputValidity, hasInvalidInput, toggleButtonState, setEventListeners, enableValidation, deleteErrorOpenPopup, openAddCard }
-import { formPopupAddCard, popupAddCard } from './const.js'
-import { openPopup } from './modal.js'
+export { validationConfig, showInputError, hideInputError, checkInputValidity, hasInvalidInput, toggleButtonState, setEventListeners, enableValidation, deleteErrorOpenPopup, openAddCard };
+import { formPopupAddCard, popupAddCard } from './const.js';
+import { openPopup } from './modal.js';
+
 const validationConfig = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',

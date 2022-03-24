@@ -1,4 +1,4 @@
-export {initialCards, popupEditProfile, buttonEdit, formPopupEditProfile, buttonCloseProfile, nameInput, jobInput, buttonProfile, buttonAdd, formPopupAddCard, buttonCloseAddCard, popupInputTitle, popupUnputUrl,  buttonAddCard, popupPhoto, closePopupPhoto, popupPhotoClick, popupPhotoTitle, profileName, profileText, box, popups, popupAddCard}
+export { initialCards, popupEditProfile, buttonEdit, formPopupEditProfile, buttonCloseProfile, nameInput, jobInput, buttonProfile, buttonAdd, formPopupAddCard, buttonCloseAddCard, popupInputTitle, popupInputUrl, buttonAddCard, popupPhoto, popupPhotoCloseButton, popupPhotoImg, popupPhotoTitle, profileName, profileText, box, popups, popupAddCard }
 
 const initialCards = [
   {
@@ -40,12 +40,12 @@ const buttonAdd = document.querySelector('.profile__button-add')
 const formPopupAddCard = popupAddCard.querySelector('.popup__form')
 const buttonCloseAddCard = popupAddCard.querySelector('.popup__button-close')
 const popupInputTitle = popupAddCard.querySelector('.popup__input-title')
-const popupUnputUrl = popupAddCard.querySelector('.popup__input-url')
+const popupInputUrl = popupAddCard.querySelector('.popup__input-url')
 const buttonAddCard = popupAddCard.querySelector('.popup__button-submit-create')
 
 const popupPhoto = document.querySelector('.popup-photo')
-const closePopupPhoto = popupPhoto.querySelector('.popup__button-close')
-const popupPhotoClick = popupPhoto.querySelector('.popup-photo__click')
+const popupPhotoCloseButton = popupPhoto.querySelector('.popup__button-close')
+const popupPhotoImg = popupPhoto.querySelector('.popup-photo__click')
 const popupPhotoTitle = popupPhoto.querySelector('.popup-photo__title')
 const profileName = document.querySelector('.profile__name')
 const profileText = document.querySelector('.profile__text')
