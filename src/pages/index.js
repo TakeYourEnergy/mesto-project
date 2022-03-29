@@ -2,10 +2,24 @@ import '../pages/index.css';
 import { openPopup, closePopup, closePopupClickOutForm } from '../components/modal.js';
 import { addCard } from '../components/card.js';
 import { validationConfig, enableValidation, deleteErrorOpenPopup, openAddCard } from '../components/validate.js';
-import { initialCards, buttonEdit, formPopupEditProfile, buttonCloseProfile, buttonAdd, formPopupAddCard, buttonCloseAddCard, popupPhoto, popupPhotoCloseButton, popups, popupAddCard, popupEditProfile, nameInput, jobInput, popupInputTitle, popupInputUrl, buttonAddCard, profileName, profileText } from '../components/const.js';
+import { buttonEdit, formPopupEditProfile, buttonCloseProfile, buttonAdd, formPopupAddCard, buttonCloseAddCard, popupPhoto, popupPhotoCloseButton, popups, popupAddCard, popupEditProfile, nameInput, jobInput, popupInputTitle, popupInputUrl, buttonAddCard, profileName, profileText } from '../components/const.js';
+import { getProfile, getCards, newProfile, newCard } from '../components/api.js';
 
 
-initialCards.forEach(el => addCard(el))
+getProfile()
+  .then((result) => {
+    profileName.textContent = result.name
+    profileText.textContent = result.about
+  })
+
+getCards()
+  .then(res => {
+    res.forEach(item => {
+      addCard(item)
+    })
+  })
+
+
 enableValidation(validationConfig)
 
 
@@ -16,16 +30,24 @@ function openPopupProfile() {
 }
 
 function hanldeProfileFormSubmit() {
-  profileName.textContent = nameInput.value
-  profileText.textContent = jobInput.value
+  newProfile(nameInput.value, jobInput.value)
+    .then((res) => {
+      console.log(res)
+      profileName.textContent = res.name
+      profileText.textContent = res.about
+    })
   closePopup(popupEditProfile)
 }
 
 function hanldeAddNewCardFormSubmit(e) {
-  addCard({
-    name: popupInputTitle.value,
-    link: popupInputUrl.value
-  })
+  // addCard({
+  //   name: popupInputTitle.value,
+  //   link: popupInputUrl.value
+  // })
+  newCard(popupInputTitle.value, popupInputUrl.value)
+    .then((res) => {
+      addCard(res)
+    })
   e.target.reset()
   closePopup(popupAddCard)
   buttonAddCard.setAttribute('disabled', true)
