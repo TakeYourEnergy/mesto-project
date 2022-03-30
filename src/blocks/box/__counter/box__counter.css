@@ -1,0 +1,9 @@
+.box__counter {
+  align-self: center;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: center;
+  max-height: 13px;
+}

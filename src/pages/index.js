@@ -2,14 +2,17 @@ import '../pages/index.css';
 import { openPopup, closePopup, closePopupClickOutForm } from '../components/modal.js';
 import { addCard } from '../components/card.js';
 import { validationConfig, enableValidation, deleteErrorOpenPopup, openAddCard } from '../components/validate.js';
-import { buttonEdit, formPopupEditProfile, buttonCloseProfile, buttonAdd, formPopupAddCard, buttonCloseAddCard, popupPhoto, popupPhotoCloseButton, popups, popupAddCard, popupEditProfile, nameInput, jobInput, popupInputTitle, popupInputUrl, buttonAddCard, profileName, profileText } from '../components/const.js';
+import { buttonEdit, formPopupEditProfile, buttonCloseProfile, buttonAdd, formPopupAddCard, buttonCloseAddCard, popupPhoto, popupPhotoCloseButton, popups, popupAddCard, popupEditProfile, nameInput, jobInput, popupInputTitle, popupInputUrl, buttonAddCard, profileName, profileText, myId } from '../components/const.js';
 import { getProfile, getCards, newProfile, newCard } from '../components/api.js';
 
 
 getProfile()
   .then((result) => {
+    //console.log(result._id)
     profileName.textContent = result.name
     profileText.textContent = result.about
+    myId.id = result._id
+    //console.log(myId)
   })
 
 getCards()

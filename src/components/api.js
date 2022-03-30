@@ -48,5 +48,31 @@ export function newCard(name, link) {
     .then(onResponce)
 }
 
+export function removeCard(cardId) {
+  return fetch(`${config.url}/cards/${cardId}`, {
+    method: 'DELETE',
+    headers: config.headers,
+  })
+    .then(onResponce)
+}
+
+export function addLike(cardId) {
+  return fetch(`${config.url}/cards/likes/${cardId}`, {
+    method: 'PUT',
+    headers: config.headers,
+  })
+    .then(onResponce)
+}
+
+export function removeLike(cardId) {
+  return fetch(`${config.url}/cards/likes/${cardId}`, {
+    method: 'DELETE',
+    headers: config.headers,
+  })
+    .then(onResponce)
+}
+
+
+
 
 

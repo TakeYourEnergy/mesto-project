@@ -17,6 +17,7 @@ const popupInputTitle = popupAddCard.querySelector('.popup__input-title')
 const popupInputUrl = popupAddCard.querySelector('.popup__input-url')
 const buttonAddCard = popupAddCard.querySelector('.popup__button-submit-create')
 
+
 const popupPhoto = document.querySelector('.popup-photo')
 const popupPhotoCloseButton = popupPhoto.querySelector('.popup__button-close')
 const popupPhotoImg = popupPhoto.querySelector('.popup-photo__click')
@@ -26,3 +27,8 @@ const profileText = document.querySelector('.profile__text')
 
 const box = document.querySelector('.box')
 const popups = document.querySelectorAll('.popup')
+
+
+export const myId = {
+  id: ''
+}

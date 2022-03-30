@@ -10,6 +10,8 @@
   display: block;
   background-color: initial;
   transition: opacity 0.2s linear;
+  align-self: center;
+  margin-bottom: 3px;
 }
 
 .box__heart:hover {

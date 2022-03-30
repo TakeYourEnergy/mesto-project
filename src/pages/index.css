@@ -18,6 +18,8 @@
 @import url(../blocks/box/__image/box__image.css);
 @import url(../blocks/box/__title/box__title.css);
 @import url(../blocks/box/__delete/box__delete.css);
+@import url(../blocks/box/__like/box__like.css);
+@import url(../blocks/box/__counter/box__counter.css);
 @import url(../blocks/footer/__text/footer__text.css);
 @import url(../blocks/header/__logo/header__logo.css);
 @import url(../blocks/profile/__avatar/profile__avatar.css);
