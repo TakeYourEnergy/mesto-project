@@ -15,14 +15,19 @@ function cloneCard(item) {
   const templateCard = document.querySelector('#templateCards').content
   const templateCardCopy = templateCard.querySelector('.box__element').cloneNode(true)
   const templateCardBoxImage = templateCardCopy.querySelector('.box__image')
-
+  const boxHeart = templateCardCopy.querySelector('.box__heart')
   const cardId = item._id
-
   const boxCounter = templateCardCopy.querySelector('.box__counter')
-  boxCounter.textContent = item.likes.length
-
   const btnDelete = templateCardCopy.querySelector('.box__delete')
 
+  templateCardBoxImage.src = item.link
+  templateCardBoxImage.alt = item.name
+  templateCardCopy.querySelector('.box__title').textContent = item.name
+
+  //!Отображение количества лайков карточки
+  boxCounter.textContent = item.likes.length
+
+//!удаление своих карточек
   if (item.owner._id !== myId.id) {
     btnDelete.style.display = 'none'
   } else {
@@ -34,12 +39,7 @@ function cloneCard(item) {
     })
   }
 
-  const boxHeart = templateCardCopy.querySelector('.box__heart')
-
-  templateCardBoxImage.src = item.link
-  templateCardBoxImage.alt = item.name
-  templateCardCopy.querySelector('.box__title').textContent = item.name
-
+  //!Постановка и снятие лайка
   boxHeart.addEventListener('click', (e) => {
     e.target.classList.toggle('box__heart_active')
     if (boxHeart.classList.contains('box__heart_active')) {
@@ -62,6 +62,7 @@ function cloneCard(item) {
     }
   })
 
+  //!разворачиваем картинку на весь экран по клику
   templateCardBoxImage.addEventListener('click', () => {
     openPopupPhoto(item.name, item.link)
   })

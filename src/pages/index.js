@@ -22,9 +22,7 @@ getCards()
     })
   })
 
-
 enableValidation(validationConfig)
-
 
 function openPopupProfile() {
   nameInput.value = profileName.textContent
@@ -43,10 +41,6 @@ function hanldeProfileFormSubmit() {
 }
 
 function hanldeAddNewCardFormSubmit(e) {
-  // addCard({
-  //   name: popupInputTitle.value,
-  //   link: popupInputUrl.value
-  // })
   newCard(popupInputTitle.value, popupInputUrl.value)
     .then((res) => {
       addCard(res)
