@@ -1,9 +1,9 @@
 import '../pages/index.css';
 import { openPopup, closePopup, closePopupClickOutForm } from '../components/modal.js';
 import { addCard } from '../components/card.js';
-import { validationConfig, enableValidation, deleteErrorOpenPopup, openAddCard } from '../components/validate.js';
-import { buttonEdit, formPopupEditProfile, buttonCloseProfile, buttonAdd, formPopupAddCard, buttonCloseAddCard, popupPhoto, popupPhotoCloseButton, popups, popupAddCard, popupEditProfile, nameInput, jobInput, popupInputTitle, popupInputUrl, buttonAddCard, profileName, profileText, myId } from '../components/const.js';
-import { getProfile, getCards, newProfile, newCard } from '../components/api.js';
+import { validationConfig, enableValidation, deleteErrorOpenPopup, openAddCard, openAvatar } from '../components/validate.js';
+import { buttonEdit, formPopupEditProfile, buttonCloseProfile, buttonAdd, formPopupAddCard, buttonCloseAddCard, popupPhoto, popupPhotoCloseButton, popups, popupAddCard, popupEditProfile, nameInput, jobInput, popupInputTitle, popupInputUrl, buttonAddCard, profileName, profileText, myId, popupAvatar, buttonAvatar, formAvatar, BtnAvatarClose, avatarImage, avatarInput } from '../components/const.js';
+import { getProfile, getCards, newProfile, newCard, newAvatar } from '../components/api.js';
 
 
 getProfile()
@@ -33,7 +33,7 @@ function openPopupProfile() {
 function hanldeProfileFormSubmit() {
   newProfile(nameInput.value, jobInput.value)
     .then((res) => {
-      console.log(res)
+      console.log(res);
       profileName.textContent = res.name
       profileText.textContent = res.about
     })
@@ -50,21 +50,32 @@ function hanldeAddNewCardFormSubmit(e) {
   buttonAddCard.setAttribute('disabled', true)
 }
 
+function hanldeAvatarFormSubmit(e) {
+  newAvatar(avatarInput.value)
+    .then((res) => {
+      console.log(avatarImage.src);
+      console.log(res.avatar);
+      avatarImage.src = res.avatar
+      e.target.reset()
+    })
+
+  closePopup(popupAvatar)
+}
+
 
 popups.forEach(item => {
   item.addEventListener('click', closePopupClickOutForm)
 })
-buttonEdit.addEventListener('click', openPopupProfile)
 
+buttonEdit.addEventListener('click', openPopupProfile)
 buttonEdit.addEventListener('click', () => {
   deleteErrorOpenPopup(formPopupEditProfile, validationConfig)
 })
-
 buttonCloseProfile.addEventListener('click', () => {
   closePopup(popupEditProfile)
 })
-
 formPopupEditProfile.addEventListener('submit', hanldeProfileFormSubmit);
+
 
 buttonAdd.addEventListener('click', () => {
   openPopup(popupAddCard)
@@ -72,14 +83,20 @@ buttonAdd.addEventListener('click', () => {
 buttonCloseAddCard.addEventListener('click', () => {
   closePopup(popupAddCard)
 })
-
 formPopupAddCard.addEventListener('submit', hanldeAddNewCardFormSubmit)
-
 popupPhotoCloseButton.addEventListener('click', () => {
   closePopup(popupPhoto)
 })
-
 buttonAdd.addEventListener('click', openAddCard)
 
+
+buttonAvatar.addEventListener('click', () => {
+  openPopup(popupAvatar)
+})
+buttonAvatar.addEventListener('click', openAvatar)
+formAvatar.addEventListener('submit', hanldeAvatarFormSubmit);
+BtnAvatarClose.addEventListener('click', () => {
+  closePopup(popupAvatar)
+})
 
 

@@ -1,5 +1,5 @@
-export { validationConfig, showInputError, hideInputError, checkInputValidity, hasInvalidInput, toggleButtonState, setEventListeners, enableValidation, deleteErrorOpenPopup, openAddCard };
-import { formPopupAddCard, popupAddCard } from './const.js';
+export { validationConfig, showInputError, hideInputError, checkInputValidity, hasInvalidInput, toggleButtonState, setEventListeners, enableValidation, deleteErrorOpenPopup, openAddCard, openAvatar };
+import { formPopupAddCard, popupAddCard, popupAvatar, formAvatar } from './const.js';
 import { openPopup } from './modal.js';
 
 const validationConfig = {
@@ -91,5 +91,10 @@ const openAddCard = function () {
   deleteErrorOpenPopup(popupAddCard, validationConfig)
 };
 
+const openAvatar = function () {
+  formAvatar.reset()
+  openPopup(popupAvatar)
+  deleteErrorOpenPopup(popupAvatar, validationConfig)
+}
 
 

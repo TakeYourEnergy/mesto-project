@@ -73,6 +73,17 @@ export function removeLike(cardId) {
 }
 
 
+export function newAvatar(link) {
+  return fetch(`${config.url}/users/me/avatar`, {
+    method: 'PATCH',
+    headers: config.headers,
+    body: JSON.stringify({
+      avatar: link
+    })
+  })
+    .then(onResponce)
+}
+
 
 
 
