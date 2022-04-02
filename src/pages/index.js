@@ -8,7 +8,8 @@ import { getProfile, getCards, newProfile, newCard, newAvatar } from '../compone
 
 getProfile()
   .then((result) => {
-    //console.log(result._id)
+    console.log(result);
+    avatarImage.src = result.avatar
     profileName.textContent = result.name
     profileText.textContent = result.about
     myId.id = result._id
