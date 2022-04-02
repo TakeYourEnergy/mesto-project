@@ -2,7 +2,7 @@ import '../pages/index.css';
 import { openPopup, closePopup, closePopupClickOutForm } from '../components/modal.js';
 import { addCard } from '../components/card.js';
 import { validationConfig, enableValidation, deleteErrorOpenPopup, openAddCard, openAvatar } from '../components/validate.js';
-import { buttonEdit, formPopupEditProfile, buttonCloseProfile, buttonAdd, formPopupAddCard, buttonCloseAddCard, popupPhoto, popupPhotoCloseButton, popups, popupAddCard, popupEditProfile, nameInput, jobInput, popupInputTitle, popupInputUrl, buttonAddCard, profileName, profileText, myId, popupAvatar, buttonAvatar, formAvatar, BtnAvatarClose, avatarImage, avatarInput } from '../components/const.js';
+import { buttonEdit, formPopupEditProfile, buttonCloseProfile, buttonAdd, formPopupAddCard, buttonCloseAddCard, popupPhoto, popupPhotoCloseButton, popups, popupAddCard, popupEditProfile, nameInput, jobInput, popupInputTitle, popupInputUrl, buttonAddCard, profileName, profileText, myId, popupAvatar, buttonAvatar, formAvatar, BtnAvatarClose, avatarImage, avatarInput, buttonProfile, avatarSubmit } from '../components/const.js';
 import { getProfile, getCards, newProfile, newCard, newAvatar } from '../components/api.js';
 
 
@@ -12,7 +12,6 @@ getProfile()
     profileName.textContent = result.name
     profileText.textContent = result.about
     myId.id = result._id
-    //console.log(myId)
   })
 
 getCards()
@@ -31,35 +30,68 @@ function openPopupProfile() {
 }
 
 function hanldeProfileFormSubmit() {
+
+  renderLoading(true, buttonProfile)
+
   newProfile(nameInput.value, jobInput.value)
     .then((res) => {
-      console.log(res);
       profileName.textContent = res.name
       profileText.textContent = res.about
+    })
+    .catch((res) => console.log(res))
+    .finally(() => {
+      renderLoading(false, buttonProfile)
     })
   closePopup(popupEditProfile)
 }
 
 function hanldeAddNewCardFormSubmit(e) {
+
+  renderLoading(true, buttonAddCard)
+
   newCard(popupInputTitle.value, popupInputUrl.value)
     .then((res) => {
       addCard(res)
+      e.target.reset()
+      closePopup(popupAddCard)
+      buttonAddCard.setAttribute('disabled', true)
     })
-  e.target.reset()
-  closePopup(popupAddCard)
-  buttonAddCard.setAttribute('disabled', true)
+    .catch((res) => console.log(res))
+    .finally(() => {
+      renderLoading(false, buttonAddCard)
+    })
+
 }
 
 function hanldeAvatarFormSubmit(e) {
+
+  renderLoading(true, avatarSubmit)
+
   newAvatar(avatarInput.value)
     .then((res) => {
-      console.log(avatarImage.src);
-      console.log(res.avatar);
+      console.log(res);
       avatarImage.src = res.avatar
       e.target.reset()
+      closePopup(popupAvatar)
+    })
+    .catch((res) => console.log(res))
+    .finally(() => {
+      renderLoading(false, avatarSubmit)
     })
 
-  closePopup(popupAvatar)
+}
+
+function renderLoading(isLoading, btn) {
+  const textLoad = 'Сохранение...'
+  if (isLoading) {
+    btn.textContent = textLoad
+  } else {
+    if (btn === avatarSubmit) {
+      btn.textContent = 'Сохранить'
+    } else {
+      btn.textContent = 'Создать'
+    }
+  }
 }
 
 
