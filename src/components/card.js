@@ -11,7 +11,7 @@ function openPopupPhoto(title, link) {
 }
 
 function cloneCard(item) {
-  //console.log(item.likes);
+  //console.log(item);
   const templateCard = document.querySelector('#templateCards').content
   const templateCardCopy = templateCard.querySelector('.box__element').cloneNode(true)
   const templateCardBoxImage = templateCardCopy.querySelector('.box__image')
@@ -19,15 +19,14 @@ function cloneCard(item) {
   const cardId = item._id
   const boxCounter = templateCardCopy.querySelector('.box__counter')
   const btnDelete = templateCardCopy.querySelector('.box__delete')
-
   templateCardBoxImage.src = item.link
   templateCardBoxImage.alt = item.name
   templateCardCopy.querySelector('.box__title').textContent = item.name
 
   //!Отображение количества лайков карточки
   boxCounter.textContent = item.likes.length
-
-//!удаление своих карточек
+  
+  //!удаление своих карточек
   if (item.owner._id !== myId.id) {
     btnDelete.style.display = 'none'
   } else {
@@ -36,6 +35,7 @@ function cloneCard(item) {
         .then(() => {
           templateCardCopy.remove()
         })
+        .catch((err) => console.log(err))
     })
   }
 
@@ -47,11 +47,13 @@ function cloneCard(item) {
         .then((res) => {
           boxCounter.textContent = res.likes.length
         })
+        .catch((err) => console.log(err))
     } else {
       removeLike(cardId)
         .then((res) => {
           boxCounter.textContent = res.likes.length
         })
+        .catch((err) => console.log(err))
     }
   })
 
@@ -72,4 +74,5 @@ function cloneCard(item) {
 function addCard(item) {
   box.prepend(cloneCard(item))
 }
+
 

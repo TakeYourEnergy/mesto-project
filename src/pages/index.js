@@ -6,21 +6,33 @@ import { buttonEdit, formPopupEditProfile, buttonCloseProfile, buttonAdd, formPo
 import { getProfile, getCards, newProfile, newCard, newAvatar } from '../components/api.js';
 
 
-getProfile()
-  .then((result) => {
-    console.log(result);
-    avatarImage.src = result.avatar
-    profileName.textContent = result.name
-    profileText.textContent = result.about
-    myId.id = result._id
-  })
+// getProfile()
+//   .then((result) => {
+//     profileName.textContent = result.name
+//     profileText.textContent = result.about
+//     myId.id = result._id
+//     avatarImage.src = result.avatar
+//   })
 
-getCards()
-  .then(res => {
-    res.forEach(item => {
+// getCards()
+//   .then(res => {
+//     res.forEach(item => {
+//       addCard(item)
+//     })
+//   })
+
+Promise.all([getProfile(), getCards()])
+  .then((result) => {
+    console.log(result[0]);
+    profileName.textContent = result[0].name
+    profileText.textContent = result[0].about
+    myId.id = result[0]._id
+    avatarImage.src = result[0].avatar
+    result[1].forEach(item => {
       addCard(item)
     })
   })
+  .catch(err => console.log(err))
 
 enableValidation(validationConfig)
 
@@ -82,6 +94,7 @@ function hanldeAvatarFormSubmit(e) {
 
 }
 
+//!загрузка
 function renderLoading(isLoading, btn) {
   const textLoad = 'Сохранение...'
   if (isLoading) {
