@@ -1,8 +1,8 @@
 import '../pages/index.css';
 import { openPopup, closePopup, closePopupClickOutForm } from '../components/modal.js';
-import { addCard } from '../components/card.js';
+import { addCard, cloneCard } from '../components/card.js';
 import { validationConfig, enableValidation, deleteErrorOpenPopup, openAddCard, openAvatar } from '../components/validate.js';
-import { buttonEdit, formPopupEditProfile, buttonCloseProfile, buttonAdd, formPopupAddCard, buttonCloseAddCard, popupPhoto, popupPhotoCloseButton, popups, popupAddCard, popupEditProfile, nameInput, jobInput, popupInputTitle, popupInputUrl, buttonAddCard, profileName, profileText, myId, popupAvatar, buttonAvatar, formAvatar, BtnAvatarClose, avatarImage, avatarInput, buttonProfile, avatarSubmit } from '../components/const.js';
+import { buttonEdit, formPopupEditProfile, buttonCloseProfile, buttonAdd, formPopupAddCard, buttonCloseAddCard, popupPhoto, popupPhotoCloseButton, popups, popupAddCard, popupEditProfile, nameInput, jobInput, popupInputTitle, popupInputUrl, buttonAddCard, profileName, profileText, myId, popupAvatar, buttonAvatar, formAvatar, BtnAvatarClose, avatarImage, avatarInput, buttonProfile, avatarSubmit, box } from '../components/const.js';
 import { getProfile, getCards, newProfile, newCard, newAvatar } from '../components/api.js';
 
 
@@ -29,7 +29,7 @@ Promise.all([getProfile(), getCards()])
     myId.id = result[0]._id
     avatarImage.src = result[0].avatar
     result[1].forEach(item => {
-      addCard(item)
+      box.append(cloneCard(item))
     })
   })
   .catch(err => console.log(err))
@@ -64,7 +64,8 @@ function hanldeAddNewCardFormSubmit(e) {
 
   newCard(popupInputTitle.value, popupInputUrl.value)
     .then((res) => {
-      addCard(res)
+      //addCard(res)
+      box.prepend(cloneCard(res))
       e.target.reset()
       closePopup(popupAddCard)
       buttonAddCard.setAttribute('disabled', true)

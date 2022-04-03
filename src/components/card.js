@@ -11,7 +11,7 @@ function openPopupPhoto(title, link) {
 }
 
 function cloneCard(item) {
-  //console.log(item);
+  console.log(item);
   const templateCard = document.querySelector('#templateCards').content
   const templateCardCopy = templateCard.querySelector('.box__element').cloneNode(true)
   const templateCardBoxImage = templateCardCopy.querySelector('.box__image')
@@ -25,7 +25,7 @@ function cloneCard(item) {
 
   //!Отображение количества лайков карточки
   boxCounter.textContent = item.likes.length
-  
+
   //!удаление своих карточек
   if (item.owner._id !== myId.id) {
     btnDelete.style.display = 'none'
