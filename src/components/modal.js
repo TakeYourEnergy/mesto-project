@@ -1,30 +1,44 @@
-export { openPopup, closePopup, handleEscUp, closePopupClickOutForm };
+export { openPopup, closePopup, handleEscUp, handlePopupClose, openAddCard, openAvatar };
+import { deleteErrorOpenPopup } from './validate.js';
+import { formPopupAddCard, formAvatar, popupAddCard, popupAvatar } from './const.js';
+import { validationConfig } from './validate.js'
 
 // !функция открытия
 function openPopup(element) {
-  document.addEventListener('keydown', handleEscUp)
-  element.classList.add('popup_opened')
-  document.body.style.overflow = 'hidden'
-}
+    document.addEventListener('keydown', handleEscUp)
+    element.classList.add('popup_opened')
+  }
+
 // !функция закрытия
 function closePopup(element) {
   document.removeEventListener('keydown', handleEscUp);
   element.classList.remove('popup_opened')
-  document.body.style.overflow = 'visible'
 }
 
 //!закрытие popup по esc
 const handleEscUp = (e) => {
-  const activePopup = document.querySelector('.popup_opened');
   if (e.key === "Escape") {
+    const activePopup = document.querySelector('.popup_opened');
     closePopup(activePopup)
   }
 }
 
 //!закрытие по клику на фон - overlay
-function closePopupClickOutForm(e) {
+function handlePopupClose(e) {
   if (e.target.classList.contains('popup') || e.target.classList.contains('popup__button-close')) {
-    closePopup(e.target)
+    closePopup(e.currentTarget)
   }
+}
+
+const openAddCard = function () {
+  formPopupAddCard.reset()
+  openPopup(popupAddCard)
+  deleteErrorOpenPopup(popupAddCard, validationConfig)
+};
+
+const openAvatar = function () {
+  formAvatar.reset()
+  openPopup(popupAvatar)
+  deleteErrorOpenPopup(popupAvatar, validationConfig)
 }
 

@@ -11,7 +11,6 @@ function openPopupPhoto(title, link) {
 }
 
 function cloneCard(item) {
-  console.log(item);
   const templateCard = document.querySelector('#templateCards').content
   const templateCardCopy = templateCard.querySelector('.box__element').cloneNode(true)
   const templateCardBoxImage = templateCardCopy.querySelector('.box__image')
@@ -41,16 +40,17 @@ function cloneCard(item) {
 
   //!Постановка и снятие лайка
   boxHeart.addEventListener('click', (e) => {
-    e.target.classList.toggle('box__heart_active')
     if (boxHeart.classList.contains('box__heart_active')) {
-      addLike(cardId)
+      removeLike(cardId)
         .then((res) => {
+          boxHeart.classList.remove('box__heart_active')
           boxCounter.textContent = res.likes.length
         })
         .catch((err) => console.log(err))
     } else {
-      removeLike(cardId)
+      addLike(cardId)
         .then((res) => {
+          boxHeart.classList.add('box__heart_active')
           boxCounter.textContent = res.likes.length
         })
         .catch((err) => console.log(err))

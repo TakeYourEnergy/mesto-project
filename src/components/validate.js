@@ -1,4 +1,4 @@
-export { validationConfig, showInputError, hideInputError, checkInputValidity, hasInvalidInput, toggleButtonState, setEventListeners, enableValidation, deleteErrorOpenPopup, openAddCard, openAvatar };
+export { validationConfig, showInputError, hideInputError, checkInputValidity, hasInvalidInput, toggleButtonState, setEventListeners, enableValidation, deleteErrorOpenPopup };
 import { formPopupAddCard, popupAddCard, popupAvatar, formAvatar } from './const.js';
 import { openPopup } from './modal.js';
 
@@ -85,16 +85,6 @@ function deleteErrorOpenPopup(formElement, config) {
   })
 }
 
-const openAddCard = function () {
-  formPopupAddCard.reset()
-  openPopup(popupAddCard)
-  deleteErrorOpenPopup(popupAddCard, validationConfig)
-};
 
-const openAvatar = function () {
-  formAvatar.reset()
-  openPopup(popupAvatar)
-  deleteErrorOpenPopup(popupAvatar, validationConfig)
-}
 
 

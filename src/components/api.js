@@ -6,7 +6,7 @@ const config = {
   }
 }
 
-export function onResponce(res) {
+export function checkResponse(res) {
   return res.ok ? res.json() : Promise.reject(res.status)
 }
 
@@ -14,17 +14,17 @@ export function getProfile() {
   return fetch(`${config.url}/users/me`, {
     headers: config.headers
   })
-    .then(onResponce)
+    .then(checkResponse)
 }
 
 export function getCards() {
   return fetch(`${config.url}/cards`, {
     headers: config.headers
   })
-    .then(onResponce)
+    .then(checkResponse)
 }
 
-export function newProfile(name, about) {
+export function changeProfile(name, about) {
   return fetch(`${config.url}/users/me`, {
     method: 'PATCH',
     headers: config.headers,
@@ -33,10 +33,10 @@ export function newProfile(name, about) {
       about: about
     })
   })
-    .then(onResponce)
+    .then(checkResponse)
 }
 
-export function newCard(name, link) {
+export function postNewCard(name, link) {
   return fetch(`${config.url}/cards`, {
     method: 'POST',
     headers: config.headers,
@@ -45,7 +45,7 @@ export function newCard(name, link) {
       link: link
     })
   })
-    .then(onResponce)
+    .then(checkResponse)
 }
 
 export function removeCard(cardId) {
@@ -53,7 +53,7 @@ export function removeCard(cardId) {
     method: 'DELETE',
     headers: config.headers,
   })
-    .then(onResponce)
+    .then(checkResponse)
 }
 
 export function addLike(cardId) {
@@ -61,7 +61,7 @@ export function addLike(cardId) {
     method: 'PUT',
     headers: config.headers,
   })
-    .then(onResponce)
+    .then(checkResponse)
 }
 
 export function removeLike(cardId) {
@@ -69,11 +69,11 @@ export function removeLike(cardId) {
     method: 'DELETE',
     headers: config.headers,
   })
-    .then(onResponce)
+    .then(checkResponse)
 }
 
 
-export function newAvatar(link) {
+export function changeAvatar(link) {
   return fetch(`${config.url}/users/me/avatar`, {
     method: 'PATCH',
     headers: config.headers,
@@ -81,7 +81,7 @@ export function newAvatar(link) {
       avatar: link
     })
   })
-    .then(onResponce)
+    .then(checkResponse)
 }
 
 
