@@ -7,17 +7,16 @@ import { getProfile, getCards, changeProfile, postNewCard, changeAvatar } from '
 
 
 Promise.all([getProfile(), getCards()])
-  .then((result) => {
-    console.log(result[0]);
-    profileName.textContent = result[0].name
-    profileText.textContent = result[0].about
-    myId.id = result[0]._id
-    avatarImage.src = result[0].avatar
-    result[1].forEach(item => {
+  .then(([userData, cards]) => {
+    profileName.textContent = userData.name
+    profileText.textContent = userData.about
+    myId.id = userData._id
+    avatarImage.src = userData.avatar
+    cards.forEach(item => {
       box.append(cloneCard(item))
     })
   })
-  .catch(err => console.log(err))
+  .catch(err => console.error(err))
 
 enableValidation(validationConfig)
 
@@ -28,26 +27,21 @@ function openPopupProfile() {
 }
 
 function hanldeProfileFormSubmit() {
-
   renderLoading(true, buttonProfile)
-
   changeProfile(nameInput.value, jobInput.value)
     .then((res) => {
       profileName.textContent = res.name
       profileText.textContent = res.about
       closePopup(popupEditProfile)
     })
-    .catch((res) => console.log(res))
+    .catch((err) => console.log(err))
     .finally(() => {
       renderLoading(false, buttonProfile)
     })
-
 }
 
 function hanldeAddpostNewCardFormSubmit(e) {
-
   renderLoading(true, buttonAddCard)
-
   postNewCard(popupInputTitle.value, popupInputUrl.value)
     .then((res) => {
       console.log(res);
@@ -56,17 +50,14 @@ function hanldeAddpostNewCardFormSubmit(e) {
       closePopup(popupAddCard)
       buttonAddCard.setAttribute('disabled', true)
     })
-    .catch((res) => console.log(res))
+    .catch((err) => console.log(err))
     .finally(() => {
       renderLoading(false, buttonAddCard)
     })
-
 }
 
 function hanldeAvatarFormSubmit(e) {
-
   renderLoading(true, avatarSubmit)
-
   changeAvatar(avatarInput.value)
     .then((res) => {
       avatarImage.src = res.avatar
@@ -94,12 +85,11 @@ function renderLoading(isLoading, btn) {
   }
 }
 
-
 popups.forEach(item => {
   item.addEventListener('click', handlePopupClose)
 })
 
-// buttonEdit.addEventListener('click', )
+
 buttonEdit.addEventListener('click', () => {
   deleteErrorOpenPopup(formPopupEditProfile, validationConfig)
   openPopupProfile()
@@ -108,21 +98,14 @@ formPopupEditProfile.addEventListener('submit', hanldeProfileFormSubmit);
 
 
 buttonAdd.addEventListener('click', () => {
-  openPopup(popupAddCard)
   openAddCard()
 })
-buttonCloseAddCard.addEventListener('click', () => {
-  closePopup(popupAddCard)
-})
 formPopupAddCard.addEventListener('submit', hanldeAddpostNewCardFormSubmit)
-//buttonAdd.addEventListener('click', openAddCard)
 
 
 buttonAvatar.addEventListener('click', () => {
-  openPopup(popupAvatar)
   openAvatar()
 })
-//buttonAvatar.addEventListener('click', openAvatar)
 formAvatar.addEventListener('submit', hanldeAvatarFormSubmit);
 
 
